@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a635d39fa525d6fa537917ac61efadaa",
+    "content-hash": "14990e87f8a7418e836dbf04f2baed98",
     "packages": [
         {
-            "name": "beyondcode/expose-utils",
+            "name": "beyondcode/expose-common",
             "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "../expose-utils",
-                "reference": "ea7895da48ead7101be271b87b06f9f5917c479c"
+                "url": "../expose-common",
+                "reference": "05ee2a7267cabf775305aa0fd2242c2a90f88149"
             },
             "require": {
                 "cboden/ratchet": "dev-master",
@@ -22,7 +22,10 @@
             "autoload": {
                 "psr-4": {
                     "Expose\\Common\\": "src/"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
             "license": [
                 "MIT"
@@ -37,7 +40,7 @@
                     "email": "diana@beyondco.de"
                 }
             ],
-            "description": "Utilities for the Expose client and server.",
+            "description": "Common utilities for the Expose client and server.",
             "transport-options": {
                 "relative": true
             }

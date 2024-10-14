@@ -22,7 +22,7 @@
     "require": {
         "php": "^8.1",
         "ext-json": "*",
-        "beyondcode/expose-utils": "*",
+        "beyondcode/expose-common": "*",
         "guzzlehttp/guzzle": "^7.5",
         "guzzlehttp/psr7": "^1.7",
         "illuminate/http": "^10.0",
@@ -51,10 +51,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -77,7 +74,7 @@
         },
         {
             "type": "path",
-            "url": "../expose-utils"
+            "url": "../expose-common"
         }
     ],
     "minimum-stability": "dev",

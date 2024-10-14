@@ -147,13 +147,6 @@ return [
         */
     'connection_callback' => null,
 
-    'connection_callbacks' => [
-        'webhook' => [
-            'url' => null,
-            'secret' => null,
-        ],
-    ],
-
     /*
         |--------------------------------------------------------------------------
         | Users

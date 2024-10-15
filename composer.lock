@@ -4,20 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14990e87f8a7418e836dbf04f2baed98",
+    "content-hash": "df0324158abfb15c521dfc8026e8412b",
     "packages": [
         {
             "name": "beyondcode/expose-common",
             "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "../expose-common",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beyondcode/expose-common",
                 "reference": "05ee2a7267cabf775305aa0fd2242c2a90f88149"
             },
             "require": {
                 "cboden/ratchet": "dev-master",
                 "symfony/psr-http-message-bridge": "^2.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -41,9 +42,7 @@
                 }
             ],
             "description": "Common utilities for the Expose client and server.",
-            "transport-options": {
-                "relative": true
-            }
+            "time": "2024-10-14T15:59:10+00:00"
         },
         {
             "name": "brick/math",
@@ -10261,6 +10260,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "beyondcode/expose-common": 20,
         "clue/reactphp-sqlite": 20
     },
     "prefer-stable": true,

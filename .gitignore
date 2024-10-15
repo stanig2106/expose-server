@@ -5,3 +5,8 @@
 .phpunit.result.cache
 .box_dump
 .editorconfig
+expose-server.php
+database/expose.db
+.expose-server.php
+.env
+/storage/*

@@ -50,7 +50,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "Expose\\Server\\": "app/"
         }
     },
     "autoload-dev": {
@@ -73,8 +73,8 @@
             "url": "https://github.com/beyondcode/Ratchet"
         },
         {
-            "type": "path",
-            "url": "../expose-common"
+            "type": "git",
+            "url": "https://github.com/beyondcode/expose-common"
         },
         {
             "type": "git",

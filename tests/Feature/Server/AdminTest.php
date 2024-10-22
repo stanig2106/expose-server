@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Server;
 
-use App\Server\Factory;
+use Expose\Server\Factory;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;

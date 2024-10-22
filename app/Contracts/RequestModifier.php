@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts;
+namespace Expose\Server\Contracts;
 
-use App\Server\Connections\HttpConnection;
+use Expose\Server\Connections\HttpConnection;
 use Illuminate\Http\Request;
 
 interface RequestModifier

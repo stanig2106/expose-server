@@ -133,7 +133,7 @@ return [
     | a random string for you. Feel free to change this.
     |
     */
-    'subdomain_generator' => \App\Server\SubdomainGenerator\RandomSubdomainGenerator::class,
+    'subdomain_generator' => \Expose\Server\SubdomainGenerator\RandomSubdomainGenerator::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -142,7 +142,7 @@ return [
     |
     | This is a callback method that will be called when a new connection is
     | established.
-    | The \App\Server\Callbacks\WebHookConnectionCallback::class is included out of the box.
+    | The \Expose\Server\Callbacks\WebHookConnectionCallback::class is included out of the box.
     |
     */
     'connection_callback' => null,
@@ -179,11 +179,11 @@ return [
         | if you want to store your users in a different store (Redis, MySQL, etc.)
         |
         */
-    'user_repository' => \App\Server\UserRepository\DatabaseUserRepository::class,
+    'user_repository' => \Expose\Server\UserRepository\DatabaseUserRepository::class,
 
-    'subdomain_repository' => \App\Server\SubdomainRepository\DatabaseSubdomainRepository::class,
+    'subdomain_repository' => \Expose\Server\SubdomainRepository\DatabaseSubdomainRepository::class,
 
-    'logger_repository' => \App\Server\LoggerRepository\DatabaseLogger::class,
+    'logger_repository' => \Expose\Server\LoggerRepository\DatabaseLogger::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -224,6 +224,6 @@ return [
 
         'interval_in_seconds' => 3600,
 
-        'repository' => \App\Server\StatisticsRepository\DatabaseStatisticsRepository::class,
+        'repository' => \Expose\Server\StatisticsRepository\DatabaseStatisticsRepository::class,
     ],
 ];

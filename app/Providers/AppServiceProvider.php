@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Expose\Server\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laminas\Uri\Uri;

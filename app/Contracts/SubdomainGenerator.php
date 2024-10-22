@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contracts;
+namespace Expose\Server\Contracts;
 
 interface SubdomainGenerator
 {

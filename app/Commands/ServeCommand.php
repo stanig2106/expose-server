@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Commands;
+namespace Expose\Server\Commands;
 
-use App\Server\Factory;
+use Expose\Server\Factory;
 use InvalidArgumentException;
 use LaravelZero\Framework\Commands\Command;
 use React\EventLoop\LoopInterface;

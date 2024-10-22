@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Server;
 
-use App\Client\Client;
-use App\Server\Factory;
+use Expose\Client;
+use Expose\Server\Factory;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Browser;
@@ -688,7 +688,7 @@ class TunnelTest extends TestCase
 
     protected function createClient()
     {
-        (new \App\Client\Factory())
+        (new \Expose\Client\Factory())
             ->setLoop($this->loop)
             ->setHost('127.0.0.1')
             ->setPort(8080)

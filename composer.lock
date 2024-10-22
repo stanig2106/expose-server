@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8dc5e6a038f47896c899b6fafd6bfa8",
+    "content-hash": "ff3c550dcfac4ff87889c17c85ee12a8",
     "packages": [
         {
             "name": "beyondcode/expose-common",
@@ -7411,6 +7411,87 @@
     ],
     "packages-dev": [
         {
+            "name": "beyondcode/expose",
+            "version": "dev-remove-server-code",
+            "dist": {
+                "type": "path",
+                "url": "../expose-v3",
+                "reference": "aee2db3972a10a9c6ea132dd4dfdc6d6f3def169"
+            },
+            "require": {
+                "beyondcode/expose-common": "dev-main",
+                "cboden/ratchet": "dev-master",
+                "ext-json": "*",
+                "laravel-zero/phar-updater": "^1.3",
+                "laravel/prompts": "^0.3.0@dev",
+                "nunomaduro/termwind": "^2.0",
+                "php": "^8.2",
+                "ratchet/pawl": "^0.3.5",
+                "react/http": "^1.1.0",
+                "react/socket": "^1.6",
+                "react/stream": "^1.1.1",
+                "riverline/multipart-parser": "^2.0",
+                "symfony/expression-language": "^5.2",
+                "symfony/http-kernel": "^7.0",
+                "symfony/psr-http-message-bridge": "^7.0"
+            },
+            "require-dev": {
+                "clue/block-react": "^1.4",
+                "guzzlehttp/guzzle": "^7.5",
+                "guzzlehttp/psr7": "^1.7",
+                "illuminate/http": "^11.5",
+                "illuminate/log": "^11.5",
+                "illuminate/pipeline": "^11.5",
+                "illuminate/validation": "^11.5",
+                "illuminate/view": "^11.5",
+                "laminas/laminas-http": "^2.13",
+                "laravel-zero/framework": "^11.0",
+                "mockery/mockery": "^1.4.2",
+                "nikic/php-parser": "^v4.10",
+                "nyholm/psr7": "^1.3",
+                "octoper/cuzzle": "dev-master",
+                "phpunit/phpunit": "^10.5.1"
+            },
+            "bin": [
+                "builds/expose"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Expose\\Client\\": "app/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-create-project-cmd": [
+                    "@php application app:rename"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "marcel@beyondco.de"
+                }
+            ],
+            "description": "Create public URLs for local sites through any firewall and VPN.",
+            "homepage": "https://sharedwithexpose.com",
+            "keywords": [
+                "expose",
+                "ngrok",
+                "tunnel"
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "clue/block-react",
             "version": "v1.5.0",
             "source": {
@@ -8980,6 +9061,59 @@
             "time": "2024-10-19T13:03:41+00:00"
         },
         {
+            "name": "ratchet/pawl",
+            "version": "v0.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ratchetphp/Pawl.git",
+                "reference": "89ec703c76dc893484a2a0ed44b48a37d445abd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ratchetphp/Pawl/zipball/89ec703c76dc893484a2a0ed44b48a37d445abd5",
+                "reference": "89ec703c76dc893484a2a0ed44b48a37d445abd5",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "^3.0 || ^2.0",
+                "php": ">=5.4",
+                "ratchet/rfc6455": "^0.3",
+                "react/socket": "^1.0 || ^0.8 || ^0.7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "reactivex/rxphp": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "Ratchet\\Client\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Asynchronous WebSocket client",
+            "keywords": [
+                "Ratchet",
+                "async",
+                "client",
+                "websocket",
+                "websocket client"
+            ],
+            "support": {
+                "issues": "https://github.com/ratchetphp/Pawl/issues",
+                "source": "https://github.com/ratchetphp/Pawl/tree/master"
+            },
+            "time": "2020-07-17T15:32:47+00:00"
+        },
+        {
             "name": "react/child-process",
             "version": "v0.6.5",
             "source": {
@@ -9227,6 +9361,62 @@
                 }
             ],
             "time": "2024-06-04T14:27:45+00:00"
+        },
+        {
+            "name": "riverline/multipart-parser",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Riverline/multipart-parser.git",
+                "reference": "7a9f4646db5181516c61b8e0225a343189beedcd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Riverline/multipart-parser/zipball/7a9f4646db5181516c61b8e0225a343189beedcd",
+                "reference": "7a9f4646db5181516c61b8e0225a343189beedcd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "laminas/laminas-diactoros": "^1.8.7 || ^2.11.1",
+                "phpunit/phpunit": "^5.7 || ^9.0",
+                "psr/http-message": "^1.0",
+                "symfony/psr-http-message-bridge": "^1.1 || ^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Riverline\\MultiPartParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romain Cambien",
+                    "email": "romain@cambien.net"
+                },
+                {
+                    "name": "Riverline",
+                    "homepage": "http://www.riverline.fr"
+                }
+            ],
+            "description": "One class library to parse multipart content with encoding and charset support.",
+            "keywords": [
+                "http",
+                "multipart",
+                "parser"
+            ],
+            "support": {
+                "issues": "https://github.com/Riverline/multipart-parser/issues",
+                "source": "https://github.com/Riverline/multipart-parser/tree/2.1.2"
+            },
+            "time": "2024-03-12T16:46:05+00:00"
         },
         {
             "name": "sebastian/cli-parser",

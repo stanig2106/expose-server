@@ -37,6 +37,7 @@
         "symfony/expression-language": "^5.2"
     },
     "require-dev": {
+        "beyondcode/expose": "*",
         "clue/block-react": "^1.4",
         "clue/reactphp-sqlite": "dev-modular-worker-for-phar-support",
         "laminas/laminas-http": "^2.13",
@@ -77,8 +78,8 @@
             "url": "https://github.com/beyondcode/expose-common"
         },
         {
-            "type": "git",
-            "url": "https://github.com/beyondcode/expose-v3"
+            "type": "path",
+            "url": "../expose-v3"
         }
     ],
     "minimum-stability": "dev",

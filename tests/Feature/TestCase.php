@@ -12,7 +12,7 @@ use function Clue\React\Block\await;
 
 abstract class TestCase extends \Tests\TestCase
 {
-    const AWAIT_TIMEOUT = 5.0;
+    const AWAIT_TIMEOUT = 1;
 
     /** @var LoopInterface */
     protected $loop;

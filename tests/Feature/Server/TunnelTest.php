@@ -2,13 +2,14 @@
 
 namespace Tests\Feature\Server;
 
-use Expose\Client;
+use Expose\Client\Client;
 use Expose\Server\Factory;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Browser;
 use React\Http\Message\ResponseException;
 use React\Http\Server;
+use React\Promise\Timer\TimeoutException;
 use React\Socket\Connection;
 use Tests\Feature\TestCase;
 
@@ -29,8 +30,6 @@ class TunnelTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->markTestSkipped('must be revisited.');
-
 
         $this->browser = new Browser($this->loop);
         $this->browser = $this->browser->withFollowRedirects(false);
@@ -167,7 +166,7 @@ class TunnelTest extends TestCase
             'can_share_tcp_ports' => 0,
         ]);
 
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
 
         /**
          * We create an expose client that connects to our server and shares
@@ -213,7 +212,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
 
         /**
          * We create an expose client that connects to our server and shares
@@ -293,7 +292,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
         /**
          * We create an expose client that connects to our server and shares
          * the created test HTTP server.
@@ -407,7 +406,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
         $client = $this->createClient();
 
         $response = $this->await($client->connectToServer('127.0.0.1:8085', 'taken', null, $user->auth_token));
@@ -529,7 +528,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
 
         $client = $this->createClient();
         $response = $this->await($client->connectToServer('127.0.0.1:8085', 'reserved', 'beyondco.de', $user->auth_token));
@@ -611,7 +610,7 @@ class TunnelTest extends TestCase
     /** @test */
     public function it_rejects_clients_with_too_many_connections()
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
         $this->app['config']['expose-server.validate_auth_tokens'] = false;
         $this->app['config']['expose-server.maximum_open_connections_per_user'] = 1;
 
@@ -629,7 +628,7 @@ class TunnelTest extends TestCase
     /** @test */
     public function it_rejects_users_with_custom_max_connection_limit()
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TimeoutException::class);
         $this->app['config']['expose-server.validate_auth_tokens'] = true;
         $this->app['config']['expose-server.maximum_open_connections_per_user'] = 5;
 

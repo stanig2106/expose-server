@@ -78,7 +78,11 @@ class Factory
 
     public function __construct()
     {
+        gc_disable();
+
         $this->loop = Loop::get();
+        $this->loop->addPeriodicTimer(30, fn () => gc_collect_cycles());
+
         $this->router = new RouteGenerator();
     }
 

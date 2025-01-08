@@ -217,6 +217,8 @@ return [
         'no_free_tcp_port_available' => 'There are no free TCP ports available on this server. Please try again later.',
 
         'tcp_port_sharing_disabled' => 'TCP port sharing is not available on this Expose server.',
+
+        'maximum_connection_length_reached' => 'You have reached the maximum connection length for this server. Please upgrade to Expose Pro for unlimited connection length.',
     ],
 
     'statistics' => [

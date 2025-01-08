@@ -57,6 +57,16 @@ class ControlConnection
         ]));
     }
 
+    public function closeWithoutReconnect()
+    {
+        $this->socket->send(json_encode([
+            'event' => 'closeWithoutReconnect',
+            'data' => [
+                'message' => config('expose-server.messages.maximum_connection_length_reached'),
+            ],
+        ]));
+    }
+
     public function close()
     {
         $this->socket->close();

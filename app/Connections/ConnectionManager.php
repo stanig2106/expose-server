@@ -49,7 +49,7 @@ class ConnectionManager implements ConnectionManagerContract
         $connection->setMaximumConnectionLength($maximumConnectionLength);
 
         $this->loop->addTimer($maximumConnectionLength * 60, function () use ($connection) {
-            $connection->socket->close();
+            $connection->closeWithoutReconnect();
         });
     }
 

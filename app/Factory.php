@@ -35,6 +35,7 @@ use Expose\Server\Http\Controllers\Admin\StoreSettingsController;
 use Expose\Server\Http\Controllers\Admin\StoreSubdomainController;
 use Expose\Server\Http\Controllers\Admin\StoreUsersController;
 use Expose\Server\Http\Controllers\ControlMessageController;
+use Expose\Server\Http\Controllers\HealthController;
 use Expose\Server\Http\Controllers\TunnelMessageController;
 use Expose\Server\Http\Router;
 use Expose\Server\Http\Server as HttpServer;
@@ -170,6 +171,8 @@ class Factory
 
         $this->router->get('/api/tcp', GetTcpConnectionsController::class, $adminCondition);
         $this->router->delete('/api/tcp/{id}', DisconnectTcpConnectionController::class, $adminCondition);
+
+        $this->router->get('/api/health', HealthController::class, $adminCondition);
     }
 
     protected function bindConfiguration()

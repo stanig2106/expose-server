@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="tailwind-config">
-        {
-          "darkMode": "class",
-          "theme": {
-              "extend": {
-                  "colors": {
-                      "dark-blue-800": "#ff9900"
-                  }
-              }
-          }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DE4E78',
+                        gray: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            300: '#d4d4d8',
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a',
+                            900: '#18181b',
+                            950: '#09090b',
+                        }
+                    },
+                }
+            }
         }
     </script>
     <style type="postcss">
@@ -23,92 +35,109 @@
     </style>
 </head>
 <body>
-<div class="min-h-screen bg-white">
+<div class="min-h-screen bg-white dark:bg-gray-800">
+    <div id="stats">
+        <nav>
+            <div class="max-w-7xl mx-auto py-4 px-4 md:px-6 flex flex-col md:flex-row md:items-center justify-between space-y-3 md:space-y-0">
+                <div class="flex space-x-8 items-center text-base">
 
+                    <a href="https://expose.dev" target="_blank" class="inline-flex items-center self-start"><img
+                                src="https://beyondco.de/apps/icons/expose.png" alt="expose.dev" class="h-8 lg:h-10">
+                        <div class="ml-4"><p class="text-lg lg:text-2xl tracking-tight font-bold dark:text-white">
+                                Expose</p>
+                            <p class="text-xs text-gray-400">by Beyond Code</p></div>
+                    </a>
 
-    <nav class="border-b border-gray-200 dark:border-gray-700">
-        <div class="py-4 px-4 md:px-6 flex flex-col md:flex-row md:items-center justify-between space-y-3 md:space-y-0 dark:bg-gray-900">
-            <div class="flex space-x-8 items-center text-base">
-
-                <a href="https://expose.dev" target="_blank" class="inline-flex items-center self-start"><img
-                            src="https://beyondco.de/apps/icons/expose.png" alt="expose.dev" class="h-8 lg:h-10">
-                    <div class="ml-4"><p class="text-lg lg:text-2xl tracking-tight font-bold">Expose</p>
-                        <p class="text-xs text-gray-400">by Beyond Code</p></div>
-                </a>
-                <div>
+                </div>
+                <div class="flex space-x-4 items-center">
                     <a href="/users"
-                       class="
-                           {% if request.is('users*') %} text-gray-900 {% else %} text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300{% endif %}
-                           font-medium leading-5 transition duration-150 ease-in-out">
+                       class="leading-5 transition duration-150 ease-in-out"
+                       v-bind:class="{ 'text-primary font-bold': currentRequest === 'users', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'users' }">
                         Users
                     </a>
+
+                    <a href="/sites"
+                       class="leading-5 transition duration-150 ease-in-out"
+                       v-bind:class="{ 'text-primary font-bold': currentRequest === 'sites', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'sites' }">
+                        Sites
+                    </a>
+
+                    <a href="/tcp"
+                       class="leading-5 transition duration-150 ease-in-out"
+                       v-bind:class="{ 'text-primary font-bold': currentRequest === 'tcp', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'tcp' }">
+                        TCP Connections
+                    </a>
+
+                    <a href="/settings"
+                       class="leading-5 transition duration-150 ease-in-out"
+                       v-bind:class="{ 'text-primary font-bold': currentRequest === 'settings', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'settings' }">
+                        Settings
+                    </a>
+                </div>
+
+                <div class="flex items-center text-xl font-bold text-gray-600">
+                    EU-1
                 </div>
             </div>
-            <div class="flex items-center">
-                Servername
-            </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="mx-auto max-w-7xl grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">
-        <div class="rounded-xl border bg-card text-card-foreground shadow">
-            <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2"><h3
-                        class="tracking-tight text-sm font-medium"> Total Users </h3>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/>
-                </svg>
+        <div class="border-b border-gray-200 dark:border-gray-700"></div>
+
+        <div class="max-w-7xl mx-auto  grid gap-4 md:grid-cols-2 lg:grid-cols-3 py-12 px-8">
+            <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
+                <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium"> Total Users </h3>
+
+                    @include('icons.users')
+
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">
+                        @{ users.total }
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
+                <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium"> Shared Sites </h3>
+                    @include('icons.computer-desktop')
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">
+                        @{ sites.length }
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
+                <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium"> Shared TCP Connections </h3>
+                    @include('icons.command-line')
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">
+                        @{ tcp_connections.length }
+                    </div>
+                </div>
 
             </div>
-            <div class="p-6 pt-0">
-                <div class="text-2xl font-bold"> $45,231.89</div>
-            </div>
-        </div>
-        <div class="rounded-xl border bg-card text-card-foreground shadow">
-            <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2"><h3
-                        class="tracking-tight text-sm font-medium"> Subscriptions </h3>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" class="h-4 w-4 text-muted-foreground">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-            </div>
-            <div class="p-6 pt-0">
-                <div class="text-2xl font-bold"> +2350</div>
-                <p class="text-xs text-muted-foreground"> +180.1% from last month </p></div>
-        </div>
-        <div class="rounded-xl border bg-card text-card-foreground shadow">
-            <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2"><h3
-                        class="tracking-tight text-sm font-medium"> Sales </h3>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" class="h-4 w-4 text-muted-foreground">
-                    <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-                    <path d="M2 10h20"></path>
-                </svg>
-            </div>
-            <div class="p-6 pt-0">
-                <div class="text-2xl font-bold"> +12,234</div>
-                <p class="text-xs text-muted-foreground"> +19% from last month </p></div>
         </div>
     </div>
-
     <div class="py-10">
         <header>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-gray-200">
                     @yield('title')
                 </h1>
             </div>
         </header>
         <main>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" id="app">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-gray-700 dark:text-gray-100" id="app">
                 @yield('content')
             </div>
         </main>
     </div>
 </div>
+
 
 @yield('scripts')
 <script>
@@ -124,6 +153,9 @@
         },
 
         methods: {
+            getDashboardStats() {
+                // TODO: fetch user/sites stats and server name
+            },
             getUsers(page) {
                 fetch('/api/users')
                     .then((response) => {
@@ -150,6 +182,13 @@
                     this.sites = data.sites;
                 });
             },
+        },
+
+        computed: {
+            currentRequest() {
+                const path = window.location.pathname;
+                return path.substring(path.lastIndexOf('/') + 1);
+            }
         },
 
         mounted() {

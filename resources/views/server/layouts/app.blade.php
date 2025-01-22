@@ -2,7 +2,7 @@
 <head>
     <title>Expose</title>
     <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<div class="min-h-screen bg-white dark:bg-gray-800">
+<div class="relative min-h-screen bg-white dark:bg-gray-800">
     <div id="stats">
         <nav>
             <div class="max-w-7xl mx-auto py-4 px-4 md:px-6 flex flex-col md:flex-row md:items-center justify-between space-y-3 md:space-y-0">

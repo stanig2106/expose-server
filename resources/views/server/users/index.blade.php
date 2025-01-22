@@ -11,13 +11,13 @@
                     List
                 </h2>
 
-                <div class="flex items-center justify-end space-x-3">
+                <div class="w-full flex items-center justify-end space-x-3">
                     <input id="search"
                            type="text"
                            v-model="search"
                            autocomplete="off"
                            placeholder="Search users"
-                           class="flex w-full max-w-sm rounded-md bg-white dark:bg-white/10 border border-gray-800/15 px-2 py-2 shadow-sm text-sm text-gray-800 dark:text-gray-200 ring-offset-background placeholder:text-gray-400 placeholder:font-medium focus-visible:outline-none focus-visible:border-gray-800/30 dark:focus-visible:border-gray-700 disabled:cursor-not-allowed disabled:opacity-50"/>
+                           class="w-full max-w-xs rounded-md bg-white dark:bg-white/10 border border-gray-800/15 px-2 py-2 shadow-sm text-sm text-gray-800 dark:text-gray-200 ring-offset-background placeholder:text-gray-400 placeholder:font-medium focus-visible:outline-none focus-visible:border-gray-800/30 dark:focus-visible:border-gray-700 disabled:cursor-not-allowed disabled:opacity-50"/>
                     <button @click="showUserCreate" type="button"
                             class=" items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg px-4 inline-flex bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700/50 text-gray-500 dark:text-gray-200 border border-gray-200 hover:border-gray-200 border-b-gray-300/80 dark:border-gray-700 dark:hover:border-gray-700 shadow-sm"
                     >

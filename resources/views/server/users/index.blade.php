@@ -145,7 +145,7 @@
                             </thead>
 
                             <tbody class="divide-y divide-gray-200 dark:divide-white/20">
-                            <tr v-for="user in users" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <tr v-if="users.length > 0" v-for="user in users" class="hover:bg-gray-50 dark:hover:bg-gray-800">
                                 <td class="px-4 py-3  text-gray-800 dark:text-gray-300">
                                     @{ user.name }
                                 </td>
@@ -176,6 +176,20 @@
                                     </button>
                                 </td>
                             </tr>
+
+
+                            <tr v-if="users.length <= 0 && search === ''" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <td class="px-4 py-3 text-xs text-center text-gray-700 dark:text-gray-300" colspan="6">
+                                    There are no users on this server.
+                                </td>
+                            </tr>
+
+                            <tr v-if="users.length <= 0 && search !== ''" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <td class="px-4 py-3 text-xs text-center text-gray-700 dark:text-gray-300" colspan="6">
+                                    Your search did not return any results.
+                                </td>
+                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -235,6 +249,9 @@
                     watch: {
                         search(val) {
                             if (val.length < 3) {
+                                if(val.length === 0) {
+                                    this.getUsers(1);
+                                }
                                 return;
                             }
                             this.getUsers(1);

@@ -77,17 +77,15 @@
 
         <div class="border-b border-gray-200 dark:border-gray-700"></div>
 
-        <div class="max-w-7xl mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-3 py-12 px-8">
+        <div class="max-w-7xl mx-auto grid gap-4 md:grid-cols-2 py-12 px-8">
             <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
                 <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
                     <h3 class="tracking-tight text-sm font-medium"> Total Users </h3>
-
                     @include('icons.users')
-
                 </div>
                 <div class="p-6 pt-0">
                     <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">
-                        @{ users.total }
+                        @{ userCount }
                     </div>
                 </div>
             </div>
@@ -98,7 +96,7 @@
                 </div>
                 <div class="p-6 pt-0">
                     <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">
-                        @{ sites.length }
+                        @{ siteCount }
                     </div>
                 </div>
             </div>
@@ -129,29 +127,20 @@
         delimiters: ['@{', '}'],
 
         data: {
-            users: [],
-            sites: [],
+            userCount: 0,
+            siteCount: 0,
+            statistics: {}
         },
 
         methods: {
             getDashboardStats() {
-                // TODO: fetch user/sites stats and server name
-            },
-            getUsers(page) {
-                fetch('/api/users')
+                fetch('/api/dashboard')
                     .then((response) => {
                         return response.json();
                     }).then((data) => {
-                    this.users = data.paginated;
-                });
-            },
-
-            getSites() {
-                fetch('/api/sites')
-                    .then((response) => {
-                        return response.json();
-                    }).then((data) => {
-                    this.sites = data.sites;
+                        this.userCount = data.userCount;
+                        this.siteCount = data.siteCount;
+                        this.statistics = data.statistics;
                 });
             },
         },
@@ -164,9 +153,7 @@
         },
 
         mounted() {
-            this.getUsers();
-            this.getConnections();
-            this.getSites();
+            this.getDashboardStats()
         }
     })
 </script>

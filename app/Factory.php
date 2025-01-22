@@ -15,6 +15,7 @@ use Expose\Server\DomainRepository\DatabaseDomainRepository;
 use Expose\Server\Http\Controllers\Admin\DeleteSubdomainController;
 use Expose\Server\Http\Controllers\Admin\DeleteUsersController;
 use Expose\Server\Http\Controllers\Admin\DisconnectSiteController;
+use Expose\Server\Http\Controllers\Admin\GetDashboardStatsController;
 use Expose\Server\Http\Controllers\Admin\GetLogsController;
 use Expose\Server\Http\Controllers\Admin\GetLogsForSubdomainController;
 use Expose\Server\Http\Controllers\Admin\GetSettingsController;
@@ -142,6 +143,8 @@ class Factory
         $this->router->get('/users', ListUsersController::class, $adminCondition);
         $this->router->get('/settings', ShowSettingsController::class, $adminCondition);
         $this->router->get('/sites', ListSitesController::class, $adminCondition);
+
+        $this->router->get('/api/dashboard', GetDashboardStatsController::class, $adminCondition);
 
         $this->router->get('/api/statistics', GetStatisticsController::class, $adminCondition);
         $this->router->get('/api/settings', GetSettingsController::class, $adminCondition);

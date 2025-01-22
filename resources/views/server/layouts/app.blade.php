@@ -28,11 +28,6 @@
             }
         }
     </script>
-    <style type="postcss">
-        ::selection {
-            @apply bg-pink-500 bg-opacity-50;
-        }
-    </style>
 </head>
 <body>
 <div class="relative min-h-screen bg-white dark:bg-gray-800">

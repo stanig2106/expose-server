@@ -67,6 +67,7 @@ class DatabaseUserRepository implements UserRepository
 
                 if ($searchQuery !== '') {
                     $query .= "WHERE name LIKE '%".$searchQuery."%' ";
+                    $query .= 'OR auth_token LIKE "%'.$searchQuery.'%" ';
                     $bindings['search'] = $searchQuery;
                 }
 

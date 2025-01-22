@@ -6,10 +6,10 @@
 @section('content')
     <div class="flex flex-col py-8" id="app">
         <form method="POST"
-              class="grid grid-cols-1 sm:grid-cols-2 space-x-8 p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 shadow-sm !pt-2 px-2">
+              class="md:grid md:grid-cols-2 md:space-x-8 p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 shadow-sm !pt-2 px-2">
 
             <div class="">
-                <div class="flex items-center justify-between w-full">
+                <div class="flex items-center justify-between">
                     <h2 class="font-medium text-gray-800 dark:text-white text-base font-headline mb-4 mb-0 pl-2 mt-2 ">
                         Messages
                     </h2>
@@ -87,7 +87,7 @@
 
                 </div>
             </div>
-            <div>
+            <div class="mt-8 md:mt-0">
                 <div class="flex items-center justify-between w-full">
                     <h2 class="font-medium text-gray-800 dark:text-white text-base font-headline mb-4 mb-0 pl-2 mt-2 ">
                         Access

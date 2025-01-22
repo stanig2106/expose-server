@@ -38,18 +38,16 @@
 <div class="relative min-h-screen bg-white dark:bg-gray-800">
     <div id="stats">
         <nav>
-            <div class="max-w-7xl mx-auto py-4 px-4 md:px-6 flex flex-col md:flex-row md:items-center justify-between space-y-3 md:space-y-0">
+            <div class="max-w-7xl mx-auto py-4 px-4 md:px-6 flex flex-col md:flex-row md:items-center justify-between">
                 <div class="flex space-x-8 items-center text-base">
-
                     <div class="inline-flex items-center self-start">
                         <img src="https://beyondco.de/apps/icons/expose.png" alt="expose.dev" class="h-8 lg:h-10">
                         <div class="ml-4"><p class="text-lg lg:text-2xl tracking-tight font-bold dark:text-white">
                                 Expose</p>
                             <p class="text-xs text-gray-400">by Beyond Code</p></div>
                     </div>
-
                 </div>
-                <div class="flex space-x-4 items-center">
+                <div class="flex space-x-4 items-center mt-4 md:mt-0">
                     <a href="/users"
                        class="leading-5 transition duration-150 ease-in-out"
                        v-bind:class="{ 'text-primary font-bold': currentRequest === 'users', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'users' }">
@@ -69,7 +67,7 @@
                     </a>
                 </div>
 
-                <div class="flex items-center text-lg font-bold text-gray-400 dark:text-gray-600">
+                <div class="flex items-center justify-end md:justify-start text-lg font-bold text-gray-400 dark:text-gray-600">
                     @{ serverKey }
                 </div>
             </div>

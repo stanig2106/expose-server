@@ -30,9 +30,11 @@ class GetDashboardStatsController extends AdminController
     {
 
         all([
+            'serverKey'=> config('expose-server.subdomain'),
             'userCount' => $this->userRepository->userCount(),
             'siteCount' => \React\Promise\resolve(count($this->connectionManager->getConnections())),
             'statistics' => $this->statisticsRepository->getStatistics(today()->subWeek()->toDateString(), today()->toDateString()),
+            'statisticsInterval' => config('expose-server.statistics.interval_in_seconds')
         ])->then(function ($results) use ($httpConnection) {
             $httpConnection->send(
                 respond_json($results)

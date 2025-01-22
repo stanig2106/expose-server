@@ -63,28 +63,6 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <label for="can_share_tcp_ports"
-                               class="font-medium text-gray-800 dark:text-gray-100 text-sm font-medium dark:text-gray-100 mb-1">
-                            Can share TCP ports
-                        </label>
-                        <div class="mt-1">
-                            <div class="inline-flex items-center">
-                                <label class="flex items-center cursor-pointer relative">
-                                    <input id="can_share_tcp_ports"
-                                           v-model="userForm.can_share_tcp_ports"
-                                           name="can_share_tcp_ports"
-                                           value="1"
-                                           type="checkbox"
-                                           class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded border border-transparent dark:border-gray-700 checked:bg-primary"
-                                    />
-                                    <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                                                    @include('icons.checkmark')
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -157,11 +135,6 @@
                                 </th>
                                 <th class="p-4 pr-0 text-sm font-medium text-gray-500 dark:text-white text-right">
                                     <div class="flex ">
-                                        TCP
-                                    </div>
-                                </th>
-                                <th class="p-4 pr-0 text-sm font-medium text-gray-500 dark:text-white text-right">
-                                    <div class="flex ">
                                         Created At
                                     </div>
                                 </th>
@@ -192,18 +165,6 @@
                                         </span>
                                     </div>
                                 </td>
-
-                                <td class="px-4 py-3 text-gray-400 dark:text-gray-300">
-                                    <div class="flex justify-end">
-                                        <span v-if="user.can_share_tcp_ports === 0">
-                                            @include('icons.micro-x-circle')
-                                        </span>
-                                        <span v-else>
-                                            @include('icons.micro-check-circle')
-                                        </span>
-                                    </div>
-                                </td>
-
                                 <td class="px-4 py-3  text-gray-800 dark:text-gray-300 text-right">
                                     @{ user.created_at }
                                 </td>
@@ -256,7 +217,6 @@
                             name: '',
                             token: '',
                             can_specify_subdomains: true,
-                            can_share_tcp_ports: true,
                             max_connections: 0,
                             errors: {},
                         },
@@ -314,7 +274,6 @@
                                     this.userForm.name = '';
                                     this.userForm.token = '';
                                     this.userForm.can_specify_subdomains = true;
-                                    this.userForm.can_share_tcp_ports = true;
                                     this.userForm.max_connections = 0;
                                     this.userForm.errors = {};
                                     this.users.unshift(data.user);

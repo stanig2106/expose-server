@@ -42,37 +42,6 @@ return [
     'validate_auth_tokens' => false,
 
     /*
-        |--------------------------------------------------------------------------
-        | TCP Port Sharing
-        |--------------------------------------------------------------------------
-        |
-        | Control if you want to allow users to share TCP ports with your Expose
-        | server. You can add fine-grained control per authentication token,
-        | but if you want to disable TCP port sharing in general, set this
-        | value to false.
-        |
-        */
-    'allow_tcp_port_sharing' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | TCP Port Range
-    |--------------------------------------------------------------------------
-    |
-    | Expose allows you to also share TCP ports, for example when sharing your
-    | local SSH server with the public. This setting allows you to define the
-    | port range that Expose will use to assign new ports to the users.
-    |
-    | Note: Do not use port ranges below 1024, as it might require root
-    | privileges to assign these ports.
-    |
-    */
-    'tcp_port_range' => [
-        'from' => 50000,
-        'to' => 60000,
-    ],
-
-    /*
     |--------------------------------------------------------------------------
     | Maximum connection length
     |--------------------------------------------------------------------------
@@ -211,12 +180,6 @@ return [
         'custom_subdomain_unauthorized' => 'You are not allowed to specify custom subdomains. Please upgrade to Expose Pro. Assigning a random subdomain instead.',
 
         'custom_domain_unauthorized' => 'You are not allowed to use this custom domain. If you think this should work, double-check the server setting and try again.',
-
-        'tcp_port_sharing_unauthorized' => 'You are not allowed to share TCP ports. Please upgrade to Expose Pro.',
-
-        'no_free_tcp_port_available' => 'There are no free TCP ports available on this server. Please try again later.',
-
-        'tcp_port_sharing_disabled' => 'TCP port sharing is not available on this Expose server.',
 
         'maximum_connection_length_reached' => 'You have reached the maximum connection length for this server. Please upgrade to Expose Pro for unlimited connection length.',
     ],

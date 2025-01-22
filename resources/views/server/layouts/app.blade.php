@@ -62,12 +62,6 @@
                         Sites
                     </a>
 
-                    <a href="/tcp"
-                       class="leading-5 transition duration-150 ease-in-out"
-                       v-bind:class="{ 'text-primary font-bold': currentRequest === 'tcp', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'tcp' }">
-                        TCP Connections
-                    </a>
-
                     <a href="/settings"
                        class="leading-5 transition duration-150 ease-in-out"
                        v-bind:class="{ 'text-primary font-bold': currentRequest === 'settings', 'text-gray-800 dark:text-gray-200 dark:hover:text-gray-100 font-medium ': currentRequest !== 'settings' }">
@@ -83,7 +77,7 @@
 
         <div class="border-b border-gray-200 dark:border-gray-700"></div>
 
-        <div class="max-w-7xl mx-auto  grid gap-4 md:grid-cols-2 lg:grid-cols-3 py-12 px-8">
+        <div class="max-w-7xl mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-3 py-12 px-8">
             <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
                 <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
                     <h3 class="tracking-tight text-sm font-medium"> Total Users </h3>
@@ -107,18 +101,6 @@
                         @{ sites.length }
                     </div>
                 </div>
-            </div>
-            <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
-                <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-                    <h3 class="tracking-tight text-sm font-medium"> Shared TCP Connections </h3>
-                    @include('icons.command-line')
-                </div>
-                <div class="p-6 pt-0">
-                    <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">
-                        @{ tcp_connections.length }
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -149,7 +131,6 @@
         data: {
             users: [],
             sites: [],
-            tcp_connections: [],
         },
 
         methods: {
@@ -162,15 +143,6 @@
                         return response.json();
                     }).then((data) => {
                     this.users = data.paginated;
-                });
-            },
-
-            getConnections() {
-                fetch('/api/tcp')
-                    .then((response) => {
-                        return response.json();
-                    }).then((data) => {
-                    this.tcp_connections = data.tcp_connections;
                 });
             },
 

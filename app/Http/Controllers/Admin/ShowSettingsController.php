@@ -24,7 +24,7 @@ class ShowSettingsController extends AdminController
     public function handle(Request $request, ConnectionInterface $httpConnection)
     {
         $httpConnection->send(
-            respond_html($this->getView($httpConnection, 'server.settings.index', [
+            respond_html($this->getBlade($httpConnection, 'server.settings.index', [
                 'configuration' => $this->configuration,
             ]))
         );

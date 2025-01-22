@@ -24,7 +24,7 @@
                                    name="showToken"
                                    value="1"
                                    type="checkbox"
-                                   class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded border bg-white shadow-sm border-gray-200 checked:border-transparent dark:border-gray-700 checked:bg-primary"
+                                   class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded border bg-white dark:bg-gray-700 shadow-sm border-gray-200 checked:border-transparent dark:border-gray-700 checked:bg-primary"
                             />
                             <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                                                     @include('icons.checkmark')
@@ -64,7 +64,7 @@
                                 </th>
                             </tr>
                             </thead>
-                            <tbody class="bg-white text-sm">
+                            <tbody class="divide-y divide-gray-200 dark:divide-white/20 text-sm">
                             <tr v-if="sites.length > 0" v-for="site in sites">
                                 <td class="px-4 py-3 font-mono text-gray-800 dark:text-gray-300">
                                     @{ site.host }
@@ -83,15 +83,15 @@
                                 <td class="px-4 py-3 text-gray-800 text-right dark:text-gray-300">
                                     @{ site.shared_at }
                                 </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                                <td class="px-4 py-3 text-right text-gray-800 dark:text-gray-300">
                                     <button @click.prevent="visit('{!! $scheme !!}://'+site.subdomain+'.{{ $configuration->hostname()}}:{{ $configuration->port() }}')" type="button"
                                             title="Visit site"
-                                            class="relative items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex bg-transparent hover:bg-gray-200 dark:hover:bg-white/15 text-gray-400 hover:text-gray-800 dark:text-white">
+                                            class="relative items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex bg-transparent dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/15 text-gray-400 hover:text-gray-800 dark:text-white dark:hover:text-white">
                                         @include('icons.micro-globe')
                                     </button>
                                     <button @click.prevent="disconnectSite(site.client_id)" type="button"
                                             title="Disconnect site"
-                                            class="relative items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex bg-transparent hover:bg-gray-200 dark:hover:bg-white/15 text-red-600 hover:text-red-600 dark:text-white">
+                                            class="relative items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex bg-transparent dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/15 text-red-600 hover:text-red-600 dark:text-white">
                                         @include('icons.micro-stop-circle')
                                     </button>
                                 </td>

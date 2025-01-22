@@ -115,10 +115,10 @@
                 </div>
             </div>
 
-            <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow">
+            <div class="rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-400 shadow">
                 <div class="gap-y-1.5 p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-                    <h3 class="tracking-tight text-sm font-medium"> Incoming requests </h3>
-                    @include('icons.users')
+                    <h3 class="tracking-tight text-sm font-medium dark:text-gray-200"> Incoming requests </h3>
+                    @include('icons.arrows-right-left')
                 </div>
                 <div class="p-6 pt-0">
                     <div class="text-2xl text-gray-800 dark:text-gray-100 font-bold">

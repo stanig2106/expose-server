@@ -54,7 +54,7 @@
                                            name="can_specify_subdomains"
                                            value="1"
                                            type="checkbox"
-                                           class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded border border-transparent dark:border-gray-700 checked:bg-primary"
+                                           class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded border bg-white shadow-sm border-gray-200 checked:border-transparent dark:border-gray-700 checked:bg-primary"
                                     />
                                     <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                                                     @include('icons.checkmark')
@@ -114,29 +114,19 @@
                             <thead>
                             <tr>
                                 <th class="p-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-                                    <div class="flex">
-                                        Name
-                                    </div>
+                                    Name
                                 </th>
                                 <th class="p-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-                                    <div class="flex ">
-                                        Auth Token
-                                    </div>
+                                    Auth Token
                                 </th>
-                                <th class="p-4 pr-0 text-sm font-medium text-gray-500 dark:text-white text-right">
-                                    <div class="flex ">
-                                        Max Connections
-                                    </div>
+                                <th class="p-4 text-sm font-medium text-gray-500 dark:text-white text-right">
+                                    Max Connections
                                 </th>
-                                <th class="p-4 pr-0 text-sm font-medium text-gray-500 dark:text-white text-right">
-                                    <div class="flex ">
-                                        Subdomains
-                                    </div>
+                                <th class="p-4 text-sm font-medium text-gray-500 dark:text-white text-right">
+                                    Subdomains
                                 </th>
-                                <th class="p-4 pr-0 text-sm font-medium text-gray-500 dark:text-white text-right">
-                                    <div class="flex ">
-                                        Created At
-                                    </div>
+                                <th class="p-4 text-sm font-medium text-gray-500 dark:text-white text-right">
+                                    Created At
                                 </th>
                                 <th class="py-4 px-6 text-left text-sm font-medium text-gray-500 dark:text-white">
                                     <span class="sr-only">Actions</span>
@@ -144,8 +134,9 @@
                             </tr>
                             </thead>
 
-                            <tbody class="divide-y divide-gray-200 dark:divide-white/20">
-                            <tr v-if="users.length > 0" v-for="user in users" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <tbody class="divide-y divide-gray-200 dark:divide-white/20 text-sm">
+                            <tr v-if="users.length > 0" v-for="user in users"
+                                class="hover:bg-gray-50 dark:hover:bg-gray-800">
                                 <td class="px-4 py-3  text-gray-800 dark:text-gray-300">
                                     @{ user.name }
                                 </td>
@@ -171,20 +162,23 @@
 
                                 <td class="px-4 py-3 text-right text-gray-800 dark:text-gray-300">
                                     <button @click.prevent="deleteUser(user)" type="button"
-                                            class="relative items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex  bg-transparent hover:bg-gray-200 dark:hover:bg-white/15 text-gray-300 hover:text-gray-800 dark:text-white">
+                                            title="Delete user"
+                                            class="relative items-center font-medium justify-center gap-2 whitespace-nowrap group disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex  bg-transparent hover:bg-gray-200 dark:hover:bg-white/15 text-red-600 hover:text-red-600 dark:text-white">
                                         @include('icons.micro-trash')
                                     </button>
                                 </td>
                             </tr>
 
 
-                            <tr v-if="users.length <= 0 && search === ''" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <tr v-if="users.length <= 0 && search === ''"
+                                class="hover:bg-gray-50 dark:hover:bg-gray-800">
                                 <td class="px-4 py-3 text-xs text-center text-gray-700 dark:text-gray-300" colspan="6">
                                     There are no users on this server.
                                 </td>
                             </tr>
 
-                            <tr v-if="users.length <= 0 && search !== ''" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <tr v-if="users.length <= 0 && search !== ''"
+                                class="hover:bg-gray-50 dark:hover:bg-gray-800">
                                 <td class="px-4 py-3 text-xs text-center text-gray-700 dark:text-gray-300" colspan="6">
                                     Your search did not return any results.
                                 </td>
@@ -249,7 +243,7 @@
                     watch: {
                         search(val) {
                             if (val.length < 3) {
-                                if(val.length === 0) {
+                                if (val.length === 0) {
                                     this.getUsers(1);
                                 }
                                 return;

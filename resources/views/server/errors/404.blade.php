@@ -51,7 +51,6 @@
         </div>
         <div class="grid grid-cols-2 gap-x-8 max-w-2xl mx-auto rounded-md bg-gray-50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-200 shadow mt-32 p-12 mb-16">
 
-
             <div class="col-span-2 pb-8">
 
                 <p>
@@ -68,7 +67,7 @@
                 </p>
 
 
-                <div class="flex justify-center mt-4 mb-8">
+                <div class="flex justify-center mt-6 mb-8">
                     <a class="bg-primary-700 hover:bg-[#EC5C86] h-10 mx-4 text-white rounded-[8px] border border-[#CA3A64] inline-flex relative bg-primary text-white"
                        href="https://expose.dev">
                         <div class="rounded-[8px] border-[#FFFFFF40] border-t h-full w-full flex items-center px-6">

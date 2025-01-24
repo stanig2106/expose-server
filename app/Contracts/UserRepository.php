@@ -8,6 +8,8 @@ interface UserRepository
 {
     public function getUsers(): PromiseInterface;
 
+    public function userCount(): PromiseInterface;
+
     public function getUserById($id): PromiseInterface;
 
     public function paginateUsers(string $searchQuery, int $perPage, int $currentPage): PromiseInterface;

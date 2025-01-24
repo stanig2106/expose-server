@@ -111,7 +111,7 @@ class ConnectionManager implements ConnectionManagerContract
 
     protected function getSharedTcpServer(): Server
     {
-        $portRange = config('expose-server.tcp_port_range');
+        $portRange = config('expose-server.tcp_port_range', ['from' => 50000, 'to' => 60000]);
 
         $port = $portRange['from'] ?? 50000;
         $maxPort = $portRange['to'] ?? 60000;

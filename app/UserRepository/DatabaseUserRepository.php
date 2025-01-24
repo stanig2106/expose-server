@@ -36,6 +36,19 @@ class DatabaseUserRepository implements UserRepository
         return $deferred->promise();
     }
 
+    public function userCount(): PromiseInterface
+    {
+        $deferred = new Deferred();
+
+        $this->database
+            ->query('SELECT COUNT(*) AS count FROM users')
+            ->then(function (Result $result) use ($deferred) {
+                $deferred->resolve($result->rows[0]['count']);
+            });
+
+        return $deferred->promise();
+    }
+
     public function paginateUsers(string $searchQuery, int $perPage, int $currentPage): PromiseInterface
     {
         $deferred = new Deferred();
@@ -54,6 +67,7 @@ class DatabaseUserRepository implements UserRepository
 
                 if ($searchQuery !== '') {
                     $query .= "WHERE name LIKE '%".$searchQuery."%' ";
+                    $query .= 'OR auth_token LIKE "%'.$searchQuery.'%" ';
                     $bindings['search'] = $searchQuery;
                 }
 

@@ -34,6 +34,7 @@
         "laravel-zero/phar-updater": "^1.3",
         "nunomaduro/termwind": "^2.0",
         "nyholm/psr7": "^1.3",
+        "ratchet/pawl": "dev-master",
         "symfony/expression-language": "^5.2"
     },
     "require-dev": {
@@ -67,6 +68,13 @@
     "repositories": [
         {
             "type": "git",
+            "url": "https://github.com/beyondcode/pawl",
+            "options": {
+                "canonical": true
+            }
+        },
+        {
+            "type": "git",
             "url": "https://github.com/seankndy/reactphp-sqlite"
         },
         {
@@ -80,6 +88,13 @@
         {
             "type": "path",
             "url": "../expose-v3"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/beyondcode/RFC6455",
+            "options": {
+                "canonical": true
+            }
         }
     ],
     "minimum-stability": "dev",

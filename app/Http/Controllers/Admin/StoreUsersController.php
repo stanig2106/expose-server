@@ -24,6 +24,8 @@ class StoreUsersController extends AdminController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'auth_token' => 'nullable',
+            'max_connections' => 'required|integer',
         ], [
             'required' => 'The :attribute field is required.',
         ]);
@@ -37,10 +39,10 @@ class StoreUsersController extends AdminController
 
         $insertData = [
             'name' => $request->get('name'),
-            'auth_token' => $request->get('token', (string) Str::uuid()),
+            'auth_token' => $request->get('auth_token', (string) Str::uuid()),
             'can_specify_subdomains' => (int) $request->get('can_specify_subdomains'),
             'can_specify_domains' => (int) $request->get('can_specify_domains'),
-            'can_share_tcp_ports' => (int) $request->get('can_share_tcp_ports'),
+            'can_share_tcp_ports' => 0,
             'max_connections' => (int) $request->get('max_connections'),
         ];
 

@@ -33,12 +33,6 @@ class StoreSettingsController extends AdminController
 
         config()->set('expose-server.messages.custom_subdomain_unauthorized', Arr::get($messages, 'custom_subdomain_unauthorized'));
 
-        config()->set('expose-server.messages.no_free_tcp_port_available', Arr::get($messages, 'no_free_tcp_port_available'));
-
-        config()->set('expose-server.messages.tcp_port_sharing_unauthorized', Arr::get($messages, 'tcp_port_sharing_unauthorized'));
-
-        config()->set('expose-server.messages.tcp_port_sharing_disabled', Arr::get($messages, 'tcp_port_sharing_disabled'));
-
         $httpConnection->send(
             respond_json([
                 'configuration' => $this->configuration,

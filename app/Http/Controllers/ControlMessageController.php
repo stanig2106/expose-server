@@ -398,7 +398,7 @@ class ControlMessageController implements MessageComponentInterface
 
     protected function canShareTcpPorts(ConnectionInterface $connection, $data, $user)
     {
-        if (! config('expose-server.allow_tcp_port_sharing', true)) {
+        if (! config('expose-server.allow_tcp_port_sharing', false)) {
             $connection->send(json_encode([
                 'event' => 'authenticationFailed',
                 'data' => [

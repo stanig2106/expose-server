@@ -15,18 +15,16 @@ use Expose\Server\DomainRepository\DatabaseDomainRepository;
 use Expose\Server\Http\Controllers\Admin\DeleteSubdomainController;
 use Expose\Server\Http\Controllers\Admin\DeleteUsersController;
 use Expose\Server\Http\Controllers\Admin\DisconnectSiteController;
-use Expose\Server\Http\Controllers\Admin\DisconnectTcpConnectionController;
+use Expose\Server\Http\Controllers\Admin\GetDashboardStatsController;
 use Expose\Server\Http\Controllers\Admin\GetLogsController;
 use Expose\Server\Http\Controllers\Admin\GetLogsForSubdomainController;
 use Expose\Server\Http\Controllers\Admin\GetSettingsController;
 use Expose\Server\Http\Controllers\Admin\GetSiteDetailsController;
 use Expose\Server\Http\Controllers\Admin\GetSitesController;
 use Expose\Server\Http\Controllers\Admin\GetStatisticsController;
-use Expose\Server\Http\Controllers\Admin\GetTcpConnectionsController;
 use Expose\Server\Http\Controllers\Admin\GetUserDetailsController;
 use Expose\Server\Http\Controllers\Admin\GetUsersController;
 use Expose\Server\Http\Controllers\Admin\ListSitesController;
-use Expose\Server\Http\Controllers\Admin\ListTcpConnectionsController;
 use Expose\Server\Http\Controllers\Admin\ListUsersController;
 use Expose\Server\Http\Controllers\Admin\RedirectToUsersController;
 use Expose\Server\Http\Controllers\Admin\ShowSettingsController;
@@ -145,7 +143,8 @@ class Factory
         $this->router->get('/users', ListUsersController::class, $adminCondition);
         $this->router->get('/settings', ShowSettingsController::class, $adminCondition);
         $this->router->get('/sites', ListSitesController::class, $adminCondition);
-        $this->router->get('/tcp', ListTcpConnectionsController::class, $adminCondition);
+
+        $this->router->get('/api/dashboard', GetDashboardStatsController::class, $adminCondition);
 
         $this->router->get('/api/statistics', GetStatisticsController::class, $adminCondition);
         $this->router->get('/api/settings', GetSettingsController::class, $adminCondition);
@@ -168,9 +167,6 @@ class Factory
         $this->router->get('/api/sites', GetSitesController::class, $adminCondition);
         $this->router->get('/api/sites/{site}', GetSiteDetailsController::class, $adminCondition);
         $this->router->delete('/api/sites/{id}', DisconnectSiteController::class, $adminCondition);
-
-        $this->router->get('/api/tcp', GetTcpConnectionsController::class, $adminCondition);
-        $this->router->delete('/api/tcp/{id}', DisconnectTcpConnectionController::class, $adminCondition);
 
         $this->router->get('/api/health', HealthController::class, $adminCondition);
     }

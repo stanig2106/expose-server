@@ -24,7 +24,7 @@ class ListUsersController extends AdminController
             ->paginateUsers($request->get('search', ''), 20, (int) $request->get('page', 1))
             ->then(function ($paginated) use ($httpConnection) {
                 $httpConnection->send(
-                    respond_html($this->getView($httpConnection, 'server.users.index', ['paginated' => $paginated]))
+                    respond_html($this->getBlade($httpConnection, 'server.users.index', ['paginated' => $paginated]))
                 );
 
                 $httpConnection->close();

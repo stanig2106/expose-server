@@ -22,7 +22,7 @@ class ListSitesController extends AdminController
 
     public function handle(Request $request, ConnectionInterface $httpConnection)
     {
-        $sites = $this->getView($httpConnection, 'server.sites.index', [
+        $sites = $this->getBlade($httpConnection, 'server.sites.index', [
             'scheme' => $this->configuration->port() === 443 ? 'https' : 'http',
             'configuration' => $this->configuration,
         ]);

@@ -25,6 +25,7 @@
         "beyondcode/expose-common": "dev-main",
         "guzzlehttp/guzzle": "^7.5",
         "guzzlehttp/psr7": "^1.7",
+        "illuminate/database": "^11.5",
         "illuminate/http": "^11.5",
         "illuminate/log": "^11.5",
         "illuminate/pipeline": "^11.5",
@@ -39,7 +40,7 @@
         "react/http": "^1.1.0",
         "react/socket": "^1.6",
         "react/stream": "^1.1.1",
-        "clue/reactphp-sqlite": "dev-modular-worker-for-phar-support",
+        "clue/reactphp-sqlite": "^1.7.0",
         "laminas/laminas-http": "^2.13",
         "twig/twig": "^3.1"
     },
@@ -72,10 +73,6 @@
             "options": {
                 "canonical": true
             }
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/seankndy/reactphp-sqlite"
         },
         {
             "type": "git",

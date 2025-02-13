@@ -190,6 +190,10 @@ class ControlMessageController implements MessageComponentInterface
                 return $this->resolveConnectionMessage($connectionInfo, $user);
             })
             ->then(function ($connectionInfo) use ($connection, $user) {
+                if ($connectionInfo === null) {
+                    return;
+                }
+
                 $connection->send(json_encode([
                     'event' => 'authenticated',
                     'data' => [
@@ -283,7 +287,7 @@ class ControlMessageController implements MessageComponentInterface
             ->getUserByToken($authToken)
             ->then(function ($user) use ($deferred) {
                 if (is_null($user)) {
-                    $deferred->reject();
+                    $deferred->reject(new \Exception("Invalid auth token"));
                 } else {
                     $this->userRepository
                         ->updateLastSharedAt($user['id'])

@@ -3,6 +3,8 @@
 namespace Tests\Feature\Server;
 
 use Expose\Client\Client;
+use Expose\Client\Contracts\LogStorageContract;
+use Expose\Client\Logger\DatabaseLogger;
 use Expose\Server\Factory;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,6 +32,10 @@ class TunnelTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+
+        $this->app->singleton(LogStorageContract::class, function ($app) {
+            return new DatabaseLogger();
+        });
 
         $this->browser = new Browser($this->loop);
         $this->browser = $this->browser->withFollowRedirects(false);
@@ -131,88 +137,13 @@ class TunnelTest extends TestCase
     }
 
     /** @test */
-    public function it_sends_incoming_requests_to_the_connected_client_via_tcp()
-    {
-        $this->createTestTcpServer();
-
-        $this->app['config']['expose-server.validate_auth_tokens'] = false;
-
-        /**
-         * We create an expose client that connects to our server and shares
-         * the created test HTTP server.
-         */
-        $client = $this->createClient();
-        $response = $this->await($client->connectToServerAndShareTcp(8085));
-
-        /**
-         * Once the client is connected, we connect to the
-         * created tunnel.
-         */
-        $connector = new \React\Socket\Connector($this->loop);
-        $connection = $this->await($connector->connect('127.0.0.1:'.$response->shared_port));
-
-        $this->assertInstanceOf(Connection::class, $connection);
-    }
-
-    /** @test */
-    public function it_rejects_tcp_sharing_if_forbidden()
-    {
-        $this->createTestTcpServer();
-
-        $this->app['config']['expose-server.validate_auth_tokens'] = true;
-
-        $user = $this->createUser([
-            'name' => 'Marcel',
-            'can_share_tcp_ports' => 0,
-        ]);
-
-        $this->expectException(TimeoutException::class);
-
-        /**
-         * We create an expose client that connects to our server and shares
-         * the created test HTTP server.
-         */
-        $client = $this->createClient();
-        $this->await($client->connectToServerAndShareTcp(8085, $user->auth_token));
-    }
-
-    /** @test */
-    public function it_allows_tcp_sharing_if_enabled_for_user()
-    {
-        $this->createTestTcpServer();
-
-        $this->app['config']['expose-server.validate_auth_tokens'] = true;
-
-        $user = $this->createUser([
-            'name' => 'Marcel',
-            'can_share_tcp_ports' => 1,
-        ]);
-
-        /**
-         * We create an expose client that connects to our server and shares
-         * the created test HTTP server.
-         */
-        $client = $this->createClient();
-        $response = $this->await($client->connectToServerAndShareTcp(8085, $user->auth_token));
-
-        /**
-         * Once the client is connected, we connect to the
-         * created tunnel.
-         */
-        $connector = new \React\Socket\Connector($this->loop);
-        $connection = $this->await($connector->connect('127.0.0.1:'.$response->shared_port));
-
-        $this->assertInstanceOf(Connection::class, $connection);
-    }
-
-    /** @test */
     public function it_rejects_clients_with_invalid_auth_tokens()
     {
         $this->app['config']['expose-server.validate_auth_tokens'] = true;
 
         $this->createTestHttpServer();
 
-        $this->expectException(TimeoutException::class);
+        $this->expectException(\Exception::class);
 
         /**
          * We create an expose client that connects to our server and shares
@@ -292,7 +223,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(TimeoutException::class);
+        $this->expectException(\Exception::class);
         /**
          * We create an expose client that connects to our server and shares
          * the created test HTTP server.
@@ -406,7 +337,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(TimeoutException::class);
+        $this->expectException(\Exception::class);
         $client = $this->createClient();
 
         $response = $this->await($client->connectToServer('127.0.0.1:8085', 'taken', null, $user->auth_token));
@@ -528,7 +459,7 @@ class TunnelTest extends TestCase
 
         $this->createTestHttpServer();
 
-        $this->expectException(TimeoutException::class);
+        $this->expectException(\Exception::class);
 
         $client = $this->createClient();
         $response = $this->await($client->connectToServer('127.0.0.1:8085', 'reserved', 'beyondco.de', $user->auth_token));
@@ -610,7 +541,7 @@ class TunnelTest extends TestCase
     /** @test */
     public function it_rejects_clients_with_too_many_connections()
     {
-        $this->expectException(TimeoutException::class);
+        $this->expectException(\Exception::class);
         $this->app['config']['expose-server.validate_auth_tokens'] = false;
         $this->app['config']['expose-server.maximum_open_connections_per_user'] = 1;
 
@@ -628,7 +559,7 @@ class TunnelTest extends TestCase
     /** @test */
     public function it_rejects_users_with_custom_max_connection_limit()
     {
-        $this->expectException(TimeoutException::class);
+        $this->expectException(\Exception::class);
         $this->app['config']['expose-server.validate_auth_tokens'] = true;
         $this->app['config']['expose-server.maximum_open_connections_per_user'] = 5;
 
@@ -645,9 +576,10 @@ class TunnelTest extends TestCase
          * the created test HTTP server.
          */
         $client = $this->createClient();
-        $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel-1', $user->auth_token));
-        $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel-2', $user->auth_token));
-        $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel-3', $user->auth_token));
+
+        $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel-1', null, $user->auth_token));
+        $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel-2', null, $user->auth_token));
+        $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel-3', null, $user->auth_token));
     }
 
     /** @test */

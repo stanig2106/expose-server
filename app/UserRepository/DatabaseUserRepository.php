@@ -135,7 +135,7 @@ class DatabaseUserRepository implements UserRepository
         $this->database
             ->query("UPDATE users SET last_shared_at = date('now') WHERE id = :id", ['id' => $id])
             ->then(function (Result $result) use ($deferred) {
-                $deferred->resolve();
+                $deferred->resolve(null);
             });
 
         return $deferred->promise();
@@ -152,9 +152,10 @@ class DatabaseUserRepository implements UserRepository
 
                 if (! is_null($user)) {
                     $user = $this->getUserDetails($user);
+                    $deferred->resolve($user);
                 }
 
-                $deferred->resolve($user);
+                $deferred->resolve(null);
             });
 
         return $deferred->promise();

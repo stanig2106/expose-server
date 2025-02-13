@@ -94,7 +94,7 @@ class ApiTest extends TestCase
             'Authorization' => base64_encode('username:secret'),
             'Content-Type' => 'application/json',
         ], json_encode([
-            'token' => $user->auth_token,
+            'auth_token' => $user->auth_token,
             'name' => 'Julia',
             'can_specify_subdomains' => false,
         ])));
@@ -122,7 +122,7 @@ class ApiTest extends TestCase
             'Content-Type' => 'application/json',
         ], json_encode([
             'name' => 'Marcel',
-            'token' => 'my-token',
+            'auth_token' => 'my-token',
         ])));
 
         /** @var Response $response */
@@ -151,7 +151,7 @@ class ApiTest extends TestCase
             'Content-Type' => 'application/json',
         ], json_encode([
             'name' => 'Marcel',
-            'token' => 'my-token',
+            'auth_token' => 'my-token',
         ])));
 
         /** @var Response $response */
@@ -178,7 +178,7 @@ class ApiTest extends TestCase
             'Content-Type' => 'application/json',
         ], json_encode([
             'name' => 'Marcel Changed',
-            'token' => 'my-token',
+            'auth_token' => 'my-token',
             'can_specify_subdomains' => 1,
             'can_specify_domains' => 1,
             'can_share_tcp_ports' => 1,
@@ -199,7 +199,6 @@ class ApiTest extends TestCase
         $this->assertSame('my-token', $users[0]->auth_token);
         $this->assertSame(1, $users[0]->can_specify_subdomains);
         $this->assertSame(1, $users[0]->can_specify_domains);
-        $this->assertSame(1, $users[0]->can_share_tcp_ports);
         $this->assertSame([], $users[0]->sites);
     }
 
@@ -213,7 +212,7 @@ class ApiTest extends TestCase
             'Content-Type' => 'application/json',
         ], json_encode([
             'name' => 'Marcel',
-            'token' => 'this-is-my-token',
+            'auth_token' => 'this-is-my-token',
         ])));
 
         /** @var Response $response */

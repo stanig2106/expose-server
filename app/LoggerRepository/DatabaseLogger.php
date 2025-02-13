@@ -23,6 +23,10 @@ class DatabaseLogger implements LoggerRepository
     {
         app(UserRepository::class)->getUserByToken($authToken)
             ->then(function ($user) use ($subdomain) {
+                if (is_null($user)) {
+                    return;
+                }
+
                 $this->database->query("
                     INSERT INTO logs (user_id, subdomain, created_at)
                     VALUES (:user_id, :subdomain, DATETIME('now'))

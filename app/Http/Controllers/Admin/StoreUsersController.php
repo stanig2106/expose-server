@@ -25,7 +25,7 @@ class StoreUsersController extends AdminController
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'auth_token' => 'nullable',
-            'max_connections' => 'required|integer',
+            'max_connections' => ['nullable', 'integer'],
         ], [
             'required' => 'The :attribute field is required.',
         ]);

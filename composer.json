@@ -1,5 +1,5 @@
 {
-    "name": "beyondcode/expose-server",
+    "name": "exposedev/server",
     "type": "project",
     "description": "Create public URLs for local sites through any firewall and VPN.",
     "keywords": [
@@ -22,7 +22,7 @@
     "require": {
         "php": "^8.2",
         "ext-json": "*",
-        "beyondcode/expose-common": "dev-main",
+        "exposedev/common": "dev-main",
         "guzzlehttp/guzzle": "^7.5",
         "guzzlehttp/psr7": "^1.7",
         "illuminate/database": "^11.5",
@@ -45,7 +45,7 @@
         "twig/twig": "^3.1"
     },
     "require-dev": {
-        "beyondcode/expose": "dev-dev",
+        "exposedev/expose": "dev-dev",
         "clue/block-react": "^1.4",
         "laravel/pint": "^1.15.1",
         "mockery/mockery": "^1.6.11",
@@ -80,11 +80,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/beyondcode/expose-common"
+            "url": "https://github.com/exposedev/common"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/beyondcode/expose-v3"
+            "url": "https://github.com/exposedev/expose"
         },
         {
             "type": "vcs",

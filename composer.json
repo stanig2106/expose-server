@@ -45,7 +45,7 @@
         "twig/twig": "^3.1"
     },
     "require-dev": {
-        "beyondcode/expose": "*",
+        "beyondcode/expose": "dev-dev",
         "clue/block-react": "^1.4",
         "laravel/pint": "^1.15.1",
         "mockery/mockery": "^1.6.11",
@@ -68,26 +68,26 @@
     },
     "repositories": [
         {
-            "type": "git",
+            "type": "vcs",
             "url": "https://github.com/beyondcode/pawl",
             "options": {
                 "canonical": true
             }
         },
         {
-            "type": "git",
+            "type": "vcs",
             "url": "https://github.com/beyondcode/Ratchet"
         },
         {
-            "type": "git",
+            "type": "vcs",
             "url": "https://github.com/beyondcode/expose-common"
         },
         {
-            "type": "path",
-            "url": "../expose-v3"
+            "type": "vcs",
+            "url": "https://github.com/beyondcode/expose-v3"
         },
         {
-            "type": "git",
+            "type": "vcs",
             "url": "https://github.com/beyondcode/RFC6455",
             "options": {
                 "canonical": true

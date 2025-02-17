@@ -303,7 +303,10 @@ class Factory
 
         /** @var SplFileInfo $migration */
         foreach ($migrations as $migration) {
-            $db->exec($migration->getContents());
+            $db->exec($migration->getContents())
+                ->catch(function ($error) {
+                    //
+                });
         }
 
         return $this;

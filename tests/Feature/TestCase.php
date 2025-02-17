@@ -29,7 +29,7 @@ abstract class TestCase extends \Tests\TestCase
         $this->loop = $this->app->make(LoopInterface::class);
     }
 
-    protected function await(PromiseInterface $promise, LoopInterface $loop = null, $timeout = null)
+    protected function await(PromiseInterface $promise, ?LoopInterface $loop = null, $timeout = null)
     {
         return await($promise, $loop ?? $this->loop, $timeout ?? static::AWAIT_TIMEOUT);
     }

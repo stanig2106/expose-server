@@ -24,7 +24,7 @@
         "ext-json": "*",
         "exposedev/common": "dev-main",
         "guzzlehttp/guzzle": "^7.5",
-        "guzzlehttp/psr7": "^1.7",
+        "guzzlehttp/psr7": "^2.0",
         "illuminate/database": "^11.5",
         "illuminate/http": "^11.5",
         "illuminate/log": "^11.5",

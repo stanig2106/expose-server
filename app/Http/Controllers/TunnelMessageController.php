@@ -8,13 +8,13 @@ use Expose\Server\Connections\HttpConnection;
 use Expose\Server\Contracts\ConnectionManager;
 use Expose\Server\Contracts\StatisticsCollector;
 use Expose\Common\Http\Controllers\Controller;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Ratchet\ConnectionInterface;
 use Ratchet\RFC6455\Messaging\Frame;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
-use function GuzzleHttp\Psr7\str;
 
 class TunnelMessageController extends Controller
 {
@@ -97,7 +97,7 @@ class TunnelMessageController extends Controller
                 $psrHttpFactory = new PsrHttpFactory($psr17Factory, $psr17Factory, $psr17Factory, $psr17Factory);
                 $request = $psrHttpFactory->createRequest($request);
 
-                $binaryMsg = new Frame(str($request), true, Frame::OP_BINARY);
+                $binaryMsg = new Frame(Message::toString($request), true, Frame::OP_BINARY);
                 $proxy->send($binaryMsg);
             });
 

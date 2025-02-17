@@ -321,7 +321,7 @@ class ControlMessageController implements MessageComponentInterface
                         ]));
                         $connection->close();
 
-                        $deferred->reject(null);
+                        $deferred->resolve(null);
 
                         return;
                     }

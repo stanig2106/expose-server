@@ -32,7 +32,7 @@ class AdminTest extends TestCase
     {
         $this->serverFactory->getSocket()->close();
 
-        $this->await(\React\Promise\Timer\resolve(0.2, $this->loop));
+        $this->await(\React\Promise\Timer\sleep(0.2, $this->loop));
 
         parent::tearDown();
     }

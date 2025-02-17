@@ -9,10 +9,8 @@ use Expose\Server\Factory;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Browser;
+use React\Http\HttpServer;
 use React\Http\Message\ResponseException;
-use React\Http\Server;
-use React\Promise\Timer\TimeoutException;
-use React\Socket\Connection;
 use Tests\Feature\TestCase;
 
 class TunnelTest extends TestCase
@@ -54,8 +52,6 @@ class TunnelTest extends TestCase
         if (isset($this->testTcpServer)) {
             $this->testTcpServer->close();
         }
-
-        $this->await(\React\Promise\Timer\resolve(0.2, $this->loop));
 
         parent::tearDown();
     }
@@ -124,6 +120,8 @@ class TunnelTest extends TestCase
          */
         $client = $this->createClient();
         $this->await($client->connectToServer('127.0.0.1:8085', 'tunnel', 'share.beyondco.de'));
+
+//        $this->await(\React\Promise\Timer\sleep(0.1, $this->loop));
 
         /**
          * Once the client is connected, we perform a GET request on the
@@ -221,17 +219,13 @@ class TunnelTest extends TestCase
             'can_specify_subdomains' => 1,
         ]);
 
-        $this->createTestHttpServer();
-
         $this->expectException(\Exception::class);
         /**
          * We create an expose client that connects to our server and shares
          * the created test HTTP server.
          */
         $client = $this->createClient();
-        $response = $this->await($client->connectToServer('127.0.0.1:8085', 'reserved', null, $user->auth_token));
-
-        $this->assertSame('reserved', $response->subdomain);
+        $this->await($client->connectToServer('127.0.0.1:8085', 'reserved', null, $user->auth_token));
     }
 
     /** @test */
@@ -623,7 +617,8 @@ class TunnelTest extends TestCase
             ->setLoop($this->loop)
             ->setHost('127.0.0.1')
             ->setPort(8080)
-            ->createClient();
+            ->createClient()
+            ->createHttpServer();
 
         $client = app(Client::class);
         $client->shouldExit(false);
@@ -644,17 +639,17 @@ class TunnelTest extends TestCase
 
     protected function createTestHttpServer()
     {
-        $server = new Server($this->loop, function (ServerRequestInterface $request) {
+        $server = new HttpServer($this->loop, function (ServerRequestInterface $request) {
             return new Response(200, ['Content-Type' => 'text/plain'], 'Hello World!');
         });
 
-        $this->testHttpServer = new \React\Socket\Server(8085, $this->loop);
+        $this->testHttpServer = new \React\Socket\SocketServer('127.0.0.1:8085', [], $this->loop);
         $server->listen($this->testHttpServer);
     }
 
     protected function createTestTcpServer()
     {
-        $this->testTcpServer = new \React\Socket\Server(8085, $this->loop);
+        $this->testTcpServer = new \React\Socket\SocketServer('127.0.0.1:8085', [], $this->loop);
 
         $this->testTcpServer->on('connection', function (\React\Socket\ConnectionInterface $connection) {
             $connection->write('Hello '.$connection->getRemoteAddress()."!\n");

@@ -3,6 +3,7 @@
 namespace Expose\Server\Http;
 
 use Expose\Common\Http\QueryParameters;
+use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\RequestInterface;
 use Ratchet\ConnectionInterface;
@@ -13,8 +14,6 @@ use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
-use function GuzzleHttp\Psr7\build_query;
-use function GuzzleHttp\Psr7\parse_query;
 
 class Router implements HttpServerInterface
 {
@@ -38,7 +37,7 @@ class Router implements HttpServerInterface
      *
      * @throws \UnexpectedValueException If a controller is not \Ratchet\Http\HttpServerInterface
      */
-    public function onOpen(ConnectionInterface $conn, RequestInterface $request = null)
+    public function onOpen(ConnectionInterface $conn, ?RequestInterface $request = null)
     {
         if (null === $request) {
             throw new \UnexpectedValueException('$request can not be null');
@@ -77,9 +76,9 @@ class Router implements HttpServerInterface
                 $parameters[$key] = $value;
             }
         }
-        $parameters = array_merge($parameters, parse_query($uri->getQuery() ?: ''));
+        $parameters = array_merge($parameters, Query::parse($uri->getQuery() ?: ''));
 
-        $request = $request->withUri($uri->withQuery(build_query($parameters)));
+        $request = $request->withUri($uri->withQuery(Query::build($parameters)));
 
         $conn->controller = $route['_controller'];
         $conn->controller->onOpen($conn, $request);

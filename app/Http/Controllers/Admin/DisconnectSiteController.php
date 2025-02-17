@@ -29,7 +29,7 @@ class DisconnectSiteController extends AdminController
         }
 
         if (! is_null($connection)) {
-            $connection->close();
+            $connection->closeWithoutReconnect();
 
             $this->connectionManager->removeControlConnection($connection);
         }

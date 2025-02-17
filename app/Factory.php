@@ -49,6 +49,7 @@ use Ratchet\WebSocket\WsServer;
 use React\EventLoop\Loop;
 use React\EventLoop\LoopInterface;
 use React\Socket\Server;
+use React\Socket\SocketServer;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -72,7 +73,7 @@ class Factory
     /** @var RouteGenerator */
     protected $router;
 
-    /** @var Server */
+    /** @var SocketServer */
     protected $socket;
 
     public function __construct()
@@ -200,7 +201,7 @@ class Factory
 
     public function createServer()
     {
-        $this->socket = new Server("{$this->host}:{$this->port}", $this->loop);
+        $this->socket = new SocketServer("{$this->host}:{$this->port}", [], $this->loop);
 
         $this->bindConfiguration()
             ->bindSubdomainGenerator()
@@ -231,7 +232,7 @@ class Factory
         return $server;
     }
 
-    public function getSocket(): Server
+    public function getSocket(): SocketServer
     {
         return $this->socket;
     }
@@ -275,14 +276,13 @@ class Factory
     protected function bindDatabase()
     {
         app()->singleton(DatabaseInterface::class, function () {
-            $factory = new \Clue\React\SQLite\Factory($this->loop);
-
-            $options = ['worker_command' => Phar::running(false) ? Phar::running(false).' --sqlite-worker' : null];
+            $factory = new \Clue\React\SQLite\Factory(
+                $this->loop,
+                Phar::running(false) ? null : ''
+            );
 
             return $factory->openLazy(
-                config('expose-server.database', ':memory:'),
-                null,
-                $options,
+                config('expose-server.database', ':memory:')
             );
         });
 

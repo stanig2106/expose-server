@@ -4,48 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1db40cf124a9f9a7ffd9c092c34aea0f",
+    "content-hash": "bf2d6ac210cacacb19c9d2ca4e08a73f",
     "packages": [
-        {
-            "name": "beyondcode/expose-common",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beyondcode/expose-common",
-                "reference": "4ca9983e3cb585f5ad67d16e745861be6efccfa1"
-            },
-            "require": {
-                "cboden/ratchet": "dev-master",
-                "nunomaduro/termwind": "^2.0",
-                "symfony/psr-http-message-bridge": "^7.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Expose\\Common\\": "src/"
-                },
-                "files": [
-                    "src/response.php",
-                    "src/rendering.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marcel Pociot",
-                    "email": "marcel@beyondco.de"
-                },
-                {
-                    "name": "Diana Scharf",
-                    "email": "diana@beyondco.de"
-                }
-            ],
-            "description": "Common utilities for the Expose client and server.",
-            "time": "2025-01-16T09:29:08+00:00"
-        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -229,8 +189,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/beyondcode/Ratchet",
+                "url": "https://github.com/beyondcode/Ratchet.git",
                 "reference": "73c47eae032e7cc5920c640f04e2a63f374c419b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beyondcode/Ratchet/zipball/73c47eae032e7cc5920c640f04e2a63f374c419b",
+                "reference": "73c47eae032e7cc5920c640f04e2a63f374c419b",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/psr7": "^1.7|^2.0",
@@ -276,7 +242,8 @@
             ],
             "support": {
                 "issues": "https://github.com/ratchetphp/Ratchet/issues",
-                "chat": "https://gitter.im/reactphp/reactphp"
+                "chat": "https://gitter.im/reactphp/reactphp",
+                "source": "https://github.com/beyondcode/Ratchet/tree/master"
             },
             "time": "2024-12-19T10:46:46+00:00"
         },
@@ -756,6 +723,56 @@
                 "source": "https://github.com/igorw/evenement/tree/v3.0.2"
             },
             "time": "2023-08-08T05:53:35+00:00"
+        },
+        {
+            "name": "exposedev/common",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/exposedev/common.git",
+                "reference": "63b5e24f6228d801eaa356a30910b0d9a54f9957"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exposedev/common/zipball/63b5e24f6228d801eaa356a30910b0d9a54f9957",
+                "reference": "63b5e24f6228d801eaa356a30910b0d9a54f9957",
+                "shasum": ""
+            },
+            "require": {
+                "cboden/ratchet": "dev-master",
+                "nunomaduro/termwind": "^2.0",
+                "symfony/psr-http-message-bridge": "^7.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Expose\\Common\\": "src/"
+                },
+                "files": [
+                    "src/response.php",
+                    "src/rendering.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "marcel@beyondco.de"
+                },
+                {
+                    "name": "Diana Scharf",
+                    "email": "diana@beyondco.de"
+                }
+            ],
+            "description": "Common utilities for the Expose client and server.",
+            "support": {
+                "source": "https://github.com/exposedev/common/tree/main",
+                "issues": "https://github.com/exposedev/common/issues"
+            },
+            "time": "2025-02-17T11:12:45+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -5319,8 +5336,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/beyondcode/pawl",
+                "url": "https://github.com/beyondcode/Pawl.git",
                 "reference": "b61bca50ce743d8da0b35fc57906fe3eafc8cb0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beyondcode/Pawl/zipball/b61bca50ce743d8da0b35fc57906fe3eafc8cb0a",
+                "reference": "b61bca50ce743d8da0b35fc57906fe3eafc8cb0a",
+                "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0",
@@ -5356,6 +5379,9 @@
                 "client",
                 "websocket client"
             ],
+            "support": {
+                "source": "https://github.com/beyondcode/Pawl/tree/master"
+            },
             "time": "2024-12-19T08:56:22+00:00"
         },
         {
@@ -5363,8 +5389,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/beyondcode/RFC6455",
+                "url": "https://github.com/beyondcode/RFC6455.git",
                 "reference": "8a6a231a432399a1dbdd6f4eb8df82ea7c734864"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beyondcode/RFC6455/zipball/8a6a231a432399a1dbdd6f4eb8df82ea7c734864",
+                "reference": "8a6a231a432399a1dbdd6f4eb8df82ea7c734864",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/psr7": "^2 || ^1.7",
@@ -5420,7 +5452,8 @@
             ],
             "support": {
                 "issues": "https://github.com/ratchetphp/RFC6455/issues",
-                "chat": "https://gitter.im/reactphp/reactphp"
+                "chat": "https://gitter.im/reactphp/reactphp",
+                "source": "https://github.com/beyondcode/RFC6455/tree/master"
             },
             "time": "2024-12-18T10:18:18+00:00"
         },
@@ -8665,15 +8698,21 @@
         {
             "name": "beyondcode/expose",
             "version": "dev-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/exposedev/expose.git",
+                "reference": "8b95baae8835445accaf7a88c70c1e295c11ad48"
+            },
             "dist": {
-                "type": "path",
-                "url": "../expose-v3",
-                "reference": "47a80acd85c537402e76584f91a75a3c0e4bc8db"
+                "type": "zip",
+                "url": "https://api.github.com/repos/exposedev/expose/zipball/8b95baae8835445accaf7a88c70c1e295c11ad48",
+                "reference": "8b95baae8835445accaf7a88c70c1e295c11ad48",
+                "shasum": ""
             },
             "require": {
-                "beyondcode/expose-common": "dev-main",
                 "cboden/ratchet": "dev-master",
                 "chillerlan/php-qrcode": "^5.0",
+                "exposedev/common": "dev-main",
                 "ext-json": "*",
                 "illuminate/database": "^11.5",
                 "laravel-zero/phar-updater": "^1.3",
@@ -8744,9 +8783,11 @@
                 "ngrok",
                 "tunnel"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/exposedev/expose/tree/dev",
+                "issues": "https://github.com/exposedev/expose/issues"
+            },
+            "time": "2025-02-17T11:25:14+00:00"
         },
         {
             "name": "chillerlan/php-qrcode",
@@ -10953,8 +10994,9 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "beyondcode/expose-common": 20,
-        "ratchet/pawl": 20
+        "exposedev/common": 20,
+        "ratchet/pawl": 20,
+        "beyondcode/expose": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

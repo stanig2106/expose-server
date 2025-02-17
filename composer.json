@@ -45,7 +45,7 @@
         "twig/twig": "^3.1"
     },
     "require-dev": {
-        "exposedev/expose": "dev-dev",
+        "beyondcode/expose": "dev-dev",
         "clue/block-react": "^1.4",
         "laravel/pint": "^1.15.1",
         "mockery/mockery": "^1.6.11",

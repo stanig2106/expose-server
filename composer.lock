@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd42fe5ff2e6a215d604fa708a2e836b",
+    "content-hash": "19a9a32a23679ce27dc8738652167271",
     "packages": [
         {
             "name": "brick/math",
@@ -5764,16 +5764,16 @@
         },
         {
             "name": "react/http",
-            "version": "v1.11.0",
+            "version": "dev-websocket-support",
             "source": {
                 "type": "git",
-                "url": "https://github.com/reactphp/http.git",
-                "reference": "8db02de41dcca82037367f67a2d4be365b1c4db9"
+                "url": "https://github.com/exposedev/http.git",
+                "reference": "d9bba511d6dee3ab6820f04ba50629d8e02af045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http/zipball/8db02de41dcca82037367f67a2d4be365b1c4db9",
-                "reference": "8db02de41dcca82037367f67a2d4be365b1c4db9",
+                "url": "https://api.github.com/repos/exposedev/http/zipball/d9bba511d6dee3ab6820f04ba50629d8e02af045",
+                "reference": "d9bba511d6dee3ab6820f04ba50629d8e02af045",
                 "shasum": ""
             },
             "require": {
@@ -5784,7 +5784,8 @@
                 "react/event-loop": "^1.2",
                 "react/promise": "^3.2 || ^2.3 || ^1.2.1",
                 "react/socket": "^1.16",
-                "react/stream": "^1.4"
+                "react/stream": "^1.4",
+                "ringcentral/psr7": "^1.3"
             },
             "require-dev": {
                 "clue/http-proxy-react": "^1.8",
@@ -5801,57 +5802,54 @@
                     "React\\Http\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "React\\Tests\\Http\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Christian Lück",
-                    "email": "christian@clue.engineering",
-                    "homepage": "https://clue.engineering/"
+                    "homepage": "https://clue.engineering/",
+                    "email": "christian@clue.engineering"
                 },
                 {
                     "name": "Cees-Jan Kiewiet",
-                    "email": "reactphp@ceesjankiewiet.nl",
-                    "homepage": "https://wyrihaximus.net/"
+                    "homepage": "https://wyrihaximus.net/",
+                    "email": "reactphp@ceesjankiewiet.nl"
                 },
                 {
                     "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com",
-                    "homepage": "https://sorgalla.com/"
+                    "homepage": "https://sorgalla.com/",
+                    "email": "jsorgalla@gmail.com"
                 },
                 {
                     "name": "Chris Boden",
-                    "email": "cboden@gmail.com",
-                    "homepage": "https://cboden.dev/"
+                    "homepage": "https://cboden.dev/",
+                    "email": "cboden@gmail.com"
                 }
             ],
             "description": "Event-driven, streaming HTTP client and server implementation for ReactPHP",
             "keywords": [
+                "HTTP",
+                "HTTP client",
+                "HTTP server",
+                "HTTPS",
+                "PSR-7",
+                "ReactPHP",
                 "async",
                 "client",
                 "event-driven",
-                "http",
-                "http client",
-                "http server",
-                "https",
-                "psr-7",
-                "reactphp",
                 "server",
                 "streaming"
             ],
             "support": {
-                "issues": "https://github.com/reactphp/http/issues",
-                "source": "https://github.com/reactphp/http/tree/v1.11.0"
+                "source": "https://github.com/exposedev/http/tree/websocket-support"
             },
-            "funding": [
-                {
-                    "url": "https://opencollective.com/reactphp",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2024-11-20T15:24:08+00:00"
+            "time": "2025-02-18T15:06:28+00:00"
         },
         {
             "name": "react/promise",
@@ -6083,6 +6081,67 @@
                 }
             ],
             "time": "2024-06-11T12:45:25+00:00"
+        },
+        {
+            "name": "ringcentral/psr7",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ringcentral/psr7.git",
+                "reference": "360faaec4b563958b673fb52bbe94e37f14bc686"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ringcentral/psr7/zipball/360faaec4b563958b673fb52bbe94e37f14bc686",
+                "reference": "360faaec4b563958b673fb52bbe94e37f14bc686",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "RingCentral\\Psr7\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "PSR-7 message implementation",
+            "keywords": [
+                "http",
+                "message",
+                "stream",
+                "uri"
+            ],
+            "support": {
+                "source": "https://github.com/ringcentral/psr7/tree/master"
+            },
+            "time": "2018-05-29T20:21:04+00:00"
         },
         {
             "name": "symfony/cache",
@@ -8706,100 +8765,6 @@
     ],
     "packages-dev": [
         {
-            "name": "beyondcode/expose",
-            "version": "dev-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/exposedev/expose.git",
-                "reference": "8b95baae8835445accaf7a88c70c1e295c11ad48"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/exposedev/expose/zipball/8b95baae8835445accaf7a88c70c1e295c11ad48",
-                "reference": "8b95baae8835445accaf7a88c70c1e295c11ad48",
-                "shasum": ""
-            },
-            "require": {
-                "cboden/ratchet": "dev-master",
-                "chillerlan/php-qrcode": "^5.0",
-                "exposedev/common": "dev-main",
-                "ext-json": "*",
-                "illuminate/database": "^11.5",
-                "laravel-zero/phar-updater": "^1.3",
-                "laravel/prompts": "^0.3.0@dev",
-                "nunomaduro/termwind": "^2.0",
-                "php": "^8.2",
-                "ratchet/pawl": "dev-master",
-                "ratchet/rfc6455": "dev-master",
-                "react/http": "^1.1.0",
-                "react/socket": "^1.6",
-                "react/stream": "^1.1.1",
-                "riverline/multipart-parser": "^2.0",
-                "symfony/expression-language": "^5.2",
-                "symfony/http-kernel": "^7.0",
-                "symfony/psr-http-message-bridge": "^7.0",
-                "symfony/yaml": "^7.0"
-            },
-            "require-dev": {
-                "fakerphp/faker": "^1.23",
-                "guzzlehttp/guzzle": "^7.5",
-                "guzzlehttp/psr7": "^1.7|^2.0",
-                "illuminate/http": "^11.5",
-                "illuminate/log": "^11.5",
-                "illuminate/pipeline": "^11.5",
-                "illuminate/validation": "^11.5",
-                "illuminate/view": "^11.5",
-                "laminas/laminas-http": "^2.13",
-                "laravel-zero/framework": "^11.0",
-                "mockery/mockery": "^1.4.2",
-                "nikic/php-parser": "^v4.10",
-                "nyholm/psr7": "^1.3",
-                "octoper/cuzzle": "dev-master",
-                "phpunit/phpunit": "^10.5.1",
-                "react/async": "^4.3"
-            },
-            "bin": [
-                "builds/expose"
-            ],
-            "type": "project",
-            "autoload": {
-                "psr-4": {
-                    "Expose\\Client\\": "app/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "post-create-project-cmd": [
-                    "@php application app:rename"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marcel Pociot",
-                    "email": "marcel@beyondco.de"
-                }
-            ],
-            "description": "Create public URLs for local sites through any firewall and VPN.",
-            "homepage": "https://sharedwithexpose.com",
-            "keywords": [
-                "expose",
-                "ngrok",
-                "tunnel"
-            ],
-            "support": {
-                "source": "https://github.com/exposedev/expose/tree/dev",
-                "issues": "https://github.com/exposedev/expose/issues"
-            },
-            "time": "2025-02-17T11:25:14+00:00"
-        },
-        {
             "name": "chillerlan/php-qrcode",
             "version": "5.0.3",
             "source": {
@@ -9028,6 +8993,101 @@
             "time": "2021-10-20T14:07:33+00:00"
         },
         {
+            "name": "exposedev/expose",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/exposedev/expose.git",
+                "reference": "1c23256fb439c5d3303352a419be7f9f41ac1f9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exposedev/expose/zipball/1c23256fb439c5d3303352a419be7f9f41ac1f9d",
+                "reference": "1c23256fb439c5d3303352a419be7f9f41ac1f9d",
+                "shasum": ""
+            },
+            "require": {
+                "cboden/ratchet": "dev-master",
+                "chillerlan/php-qrcode": "^5.0",
+                "exposedev/common": "dev-main",
+                "ext-json": "*",
+                "illuminate/database": "^11.5",
+                "laravel-zero/phar-updater": "^1.3",
+                "laravel/prompts": "^0.3.0@dev",
+                "nunomaduro/termwind": "^2.0",
+                "php": "^8.2",
+                "ratchet/pawl": "dev-master",
+                "ratchet/rfc6455": "dev-master",
+                "react/http": "dev-websocket-support",
+                "react/socket": "^1.6",
+                "react/stream": "^1.1.1",
+                "riverline/multipart-parser": "^2.0",
+                "symfony/expression-language": "^5.2",
+                "symfony/http-kernel": "^7.0",
+                "symfony/psr-http-message-bridge": "^7.0",
+                "symfony/yaml": "^7.0"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.23",
+                "guzzlehttp/guzzle": "^7.5",
+                "guzzlehttp/psr7": "^1.7|^2.0",
+                "illuminate/http": "^11.5",
+                "illuminate/log": "^11.5",
+                "illuminate/pipeline": "^11.5",
+                "illuminate/validation": "^11.5",
+                "illuminate/view": "^11.5",
+                "laminas/laminas-http": "^2.13",
+                "laravel-zero/framework": "^11.0",
+                "mockery/mockery": "^1.4.2",
+                "nikic/php-parser": "^v4.10",
+                "nyholm/psr7": "^1.3",
+                "octoper/cuzzle": "dev-master",
+                "phpunit/phpunit": "^10.5.1",
+                "react/async": "^4.3"
+            },
+            "default-branch": true,
+            "bin": [
+                "builds/expose"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Expose\\Client\\": "app/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-create-project-cmd": [
+                    "@php application app:rename"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "marcel@beyondco.de"
+                }
+            ],
+            "description": "Create public URLs for local sites through any firewall and VPN.",
+            "homepage": "https://sharedwithexpose.com",
+            "keywords": [
+                "expose",
+                "ngrok",
+                "tunnel"
+            ],
+            "support": {
+                "source": "https://github.com/exposedev/expose/tree/master",
+                "issues": "https://github.com/exposedev/expose/issues"
+            },
+            "time": "2025-02-18T15:08:05+00:00"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.1",
             "source": {
@@ -9080,16 +9140,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.20.0",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "53072e8ea22213a7ed168a8a15b96fbb8b82d44b"
+                "reference": "531fa0871fbde719c51b12afa3a443b8f4e4b425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/53072e8ea22213a7ed168a8a15b96fbb8b82d44b",
-                "reference": "53072e8ea22213a7ed168a8a15b96fbb8b82d44b",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/531fa0871fbde719c51b12afa3a443b8f4e4b425",
+                "reference": "531fa0871fbde719c51b12afa3a443b8f4e4b425",
                 "shasum": ""
             },
             "require": {
@@ -9097,15 +9157,15 @@
                 "ext-mbstring": "*",
                 "ext-tokenizer": "*",
                 "ext-xml": "*",
-                "php": "^8.1.0"
+                "php": "^8.2.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.66.0",
-                "illuminate/view": "^10.48.25",
-                "larastan/larastan": "^2.9.12",
-                "laravel-zero/framework": "^10.48.25",
+                "friendsofphp/php-cs-fixer": "^3.68.5",
+                "illuminate/view": "^11.42.0",
+                "larastan/larastan": "^3.0.4",
+                "laravel-zero/framework": "^11.36.1",
                 "mockery/mockery": "^1.6.12",
-                "nunomaduro/termwind": "^1.17.0",
+                "nunomaduro/termwind": "^2.3",
                 "pestphp/pest": "^2.36.0"
             },
             "bin": [
@@ -9142,7 +9202,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2025-01-14T16:20:53+00:00"
+            "time": "2025-02-18T03:18:57+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -11004,9 +11064,10 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "beyondcode/expose": 20,
         "exposedev/common": 20,
-        "ratchet/pawl": 20
+        "exposedev/expose": 20,
+        "ratchet/pawl": 20,
+        "react/http": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

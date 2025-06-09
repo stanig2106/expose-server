@@ -1,4 +1,4 @@
-FROM php:8.1-cli
+FROM php:8.2-cli
 
 RUN apt-get update
 RUN apt-get install -y git libzip-dev zip
@@ -11,8 +11,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /src
 WORKDIR /src
 
+# Forcer git à utiliser HTTPS au lieu de SSH
+RUN git config --global url."https://github.com/".insteadOf "git@github.com:"
+
 # install the dependencies
-RUN composer install -o --prefer-dist && chmod a+x expose
+RUN composer install -o --prefer-dist && chmod a+x builds/expose-server
 
 ENV port=8080
 ENV domain=localhost

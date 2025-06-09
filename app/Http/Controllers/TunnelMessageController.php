@@ -70,11 +70,54 @@ class TunnelMessageController extends Controller
 
     protected function detectSubdomain(Request $request): ?string
     {
-        $serverHost = $this->detectServerHost($request);
+        $host = $request->header('Host');
+        if (!$host) {
+            return null; // No host header, should not happen in HTTP/1.1
+        }
 
-        $subdomain = Str::before($request->header('Host'), '.'.$serverHost);
+        // Remove port if present from $host for comparison and for Str::before/endsWith
+        $hostWithoutPort = Str::before($host, ':');
 
-        return $subdomain === $request->header('Host') ? null : $subdomain;
+        // Get the configured main server hostname (will be added in Step 4)
+        // Assuming it's stored like 'expose-server.main_server_hostname'
+        // The config() helper will return null if not found, so handle that.
+        $mainServerHostname = config('expose-server.main_server_hostname');
+
+        if (!$mainServerHostname) {
+            // Configuration is missing, fall back to a defensive behavior or log an error.
+            // For now, let's try to mimic the old behavior if config is missing,
+            // though this path indicates a setup issue.
+            // Old behavior was:
+            $originalServerHost = $this->detectServerHost($request); // This uses the original detectServerHost
+            if ($originalServerHost === null || $originalServerHost === $hostWithoutPort) { // host is like "domain.com" or detectServerHost failed
+                return null;
+            }
+            // Ensure $originalServerHost is not an empty string before concatenating with '.'
+            if ($originalServerHost === '') {
+                return null;
+            }
+            $subdomain = Str::before($hostWithoutPort, '.'.$originalServerHost);
+            return $subdomain === $hostWithoutPort ? null : $subdomain;
+        }
+
+        // If the current host matches the main server hostname, it's not a tunnel.
+        if ($hostWithoutPort === $mainServerHostname) {
+            return null; // Request is for the main page
+        }
+
+        // Check if the host is a subdomain of the mainServerHostname.
+        // Ensure $mainServerHostname is not empty and $hostWithoutPort is longer.
+        // Also ensure $mainServerHostname does not start with a dot.
+        if ($mainServerHostname !== '' && !Str::startsWith($mainServerHostname, '.') && Str::endsWith($hostWithoutPort, '.'.$mainServerHostname)) {
+            $subdomain = Str::before($hostWithoutPort, '.'.$mainServerHostname);
+            // If $subdomain is empty string, it means host was ".main_server_hostname", which is invalid.
+            // Or if $subdomain is same as $hostWithoutPort (shouldn't happen if endsWith was true with a non-empty mainServerHostname)
+            return ($subdomain === '' || $subdomain === $hostWithoutPort) ? null : $subdomain;
+        }
+
+        // If the host is not the main server and not a subdomain of it,
+        // it's an unrecognized host. Treat as if no subdomain was found.
+        return null;
     }
 
     protected function detectServerHost(Request $request): ?string

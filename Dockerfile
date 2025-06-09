@@ -22,6 +22,7 @@ ENV domain=localhost
 ENV username=username
 ENV password=password
 ENV exposeConfigPath=/src/config/expose-server.php
+ENV EXPOSE_MAIN_HOSTNAME=""
 
 COPY docker-entrypoint.sh /usr/bin/
 RUN chmod 755 /usr/bin/docker-entrypoint.sh

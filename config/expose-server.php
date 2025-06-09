@@ -106,6 +106,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Main Server Hostname
+    |--------------------------------------------------------------------------
+    |
+    | This is the exact hostname that the Expose server's main informational
+    | page is served from. Requests to this hostname will not be treated
+    | as tunnel requests. For example, if Expose is hosted at 'expose.example.com',
+    | set this to 'expose.example.com'. Tunnels will then be typically
+    | served as subdomains of this hostname, e.g., 'my-tunnel.expose.example.com'.
+    | If this is not set (e.g. EXPOSE_MAIN_HOSTNAME env var is missing),
+    | the subdomain detection might behave unpredictably for the main server URL.
+    | Set the EXPOSE_MAIN_HOSTNAME environment variable to your equivalent of 'e.gam-s.fr'.
+    |
+    */
+    'main_server_hostname' => env('EXPOSE_MAIN_HOSTNAME', null), // Example: env('EXPOSE_MAIN_HOSTNAME', 'expose.example.com')
+
+    /*
+    |--------------------------------------------------------------------------
     | Connection Callback
     |--------------------------------------------------------------------------
     |

@@ -135,7 +135,7 @@ return [
         |
         */
     'users' => [
-        'username' => 'secret',
+        'username' => 'password',
     ],
 
     /*
